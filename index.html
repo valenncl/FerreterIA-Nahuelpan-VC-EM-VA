@@ -1,10 +1,32 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ferreteria-nahuelpan-vc-em-va</title>
+    <title>Bulonería y Ferretería Nahuelpan</title>
+
+    <!-- CDN de Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Configuración de la paleta de colores oficial -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              nahuelpan: {
+                black: '#000000',
+                red: '#770C0D',
+                gray: '#6E6A68',
+                gold: '#F9B805',
+              },
+              whatsapp: '#25D366',
+            }
+          }
+        }
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>

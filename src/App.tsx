@@ -1,11 +1,11 @@
-import { Inicio } from './pages/public/Inicio'
+import { DetalleCategoria } from './pages/public/DetalleCategoria';
 
 function App() {
   return (
     <main className="min-h-screen bg-white">
-      <Inicio />
+      <DetalleCategoria />
     </main>
-  )
+  );
 }
 
-export default App
+export default App;

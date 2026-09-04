@@ -1,71 +1,69 @@
 import React from 'react';
+import { ProductoCard } from '../../components/ProductoCard';
 
-interface CategoriaItem {
+interface ProductoItem {
   id: string;
   nombre: string;
+  precio: string;
   disponible: boolean;
   imagenUrl: string;
 }
 
-export const Categorias: React.FC = () => {
-  const categorias: CategoriaItem[] = [
+export const Productos: React.FC = () => {
+  const productos: ProductoItem[] = [
     {
       id: '1',
-      nombre: 'Herramientas',
+      nombre: 'Bulón Hexagonal 1/2 x 2"',
+      precio: '$1.200',
+      disponible: true,
+      imagenUrl: 'https://images.unsplash.com/photo-1508873696983-2df515122519?auto=format&fit=crop&w=500&q=80',
+    },
+    {
+      id: '2',
+      nombre: 'Taladro Percutor 750W',
+      precio: '$45.000',
       disponible: true,
       imagenUrl: 'https://images.unsplash.com/photo-1530124566582-a618bc2615dc?auto=format&fit=crop&w=500&q=80',
     },
     {
-      id: '2',
-      nombre: 'Pinturería',
-      disponible: true,
+      id: '3',
+      nombre: 'Pintura Látex Interior 10L',
+      precio: '$28.500',
+      disponible: false,
       imagenUrl: 'https://images.unsplash.com/photo-1562259949-e8e7689d7828?auto=format&fit=crop&w=500&q=80',
     },
     {
-      id: '3',
-      nombre: 'Sanitarios',
+      id: '4',
+      nombre: 'Juego de Llaves Combinadas',
+      precio: '$18.900',
       disponible: true,
-      imagenUrl: 'https://images.unsplash.com/photo-1581244277943-fe4a9c777189?auto=format&fit=crop&w=500&q=80',
+      imagenUrl: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=500&q=80',
     },
     {
-      id: '4',
-      nombre: 'Electricidad',
+      id: '5',
+      nombre: 'Cinta Aislante Negra 20m',
+      precio: '$850',
       disponible: true,
       imagenUrl: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=500&q=80',
     },
     {
-      id: '5',
-      nombre: 'Ferretería',
-      disponible: false,
-      imagenUrl: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=500&q=80',
-    },
-    {
       id: '6',
-      nombre: 'Gas',
-      disponible: true,
-      imagenUrl: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=500&q=80',
-    },
-    {
-      id: '7',
-      nombre: 'Bulonería',
+      nombre: 'Adhesivo de Contacto 500g',
+      precio: '$4.200',
       disponible: false,
-      imagenUrl: 'https://images.unsplash.com/photo-1508873696983-2df515122519?auto=format&fit=crop&w=500&q=80',
-    },
-    {
-      id: '8',
-      nombre: 'Adhesivos',
-      disponible: true,
       imagenUrl: 'https://images.unsplash.com/photo-1572981779307-38b8cabb2407?auto=format&fit=crop&w=500&q=80',
     },
     {
-      id: '9',
-      nombre: 'Materiales',
+      id: '7',
+      nombre: 'Disco de Corte para Metal 4.5"',
+      precio: '$1.500',
       disponible: true,
       imagenUrl: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=500&q=80',
     },
     {
-      id: '10',
-      nombre: 'Jardinería',
+      id: '8',
+      nombre: 'Manguera de Riego 1/2" 15m',
+      precio: '$12.400',
       disponible: true,
       imagenUrl: 'https://images.unsplash.com/photo-1416879595882-3373a0480b5b?auto=format&fit=crop&w=500&q=80',
     },
@@ -77,10 +75,10 @@ export const Categorias: React.FC = () => {
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
         <div>
           <h1 className="text-2xl sm:text-3xl font-bold text-nahuelpan-black">
-            Categorías de Productos
+            Catálogo de Productos
           </h1>
           <p className="text-xs sm:text-sm text-nahuelpan-gray mt-1">
-            Explora nuestras categorías y consulta disponibilidad
+            Explora nuestros productos disponibles y consulta precios
           </p>
         </div>
 
@@ -88,7 +86,7 @@ export const Categorias: React.FC = () => {
         <div className="relative w-full md:w-72">
           <input
             type="text"
-            placeholder="Buscar categoría..."
+            placeholder="Buscar producto..."
             className="w-full pl-9 pr-4 py-1.5 text-xs border border-gray-600 rounded-full focus:outline-none focus:border-nahuelpan-black"
           />
           <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 text-xs">
@@ -104,7 +102,7 @@ export const Categorias: React.FC = () => {
           type="button"
           className="bg-nahuelpan-gold text-nahuelpan-black px-4 py-1 rounded-full font-bold shadow-sm"
         >
-          Todas
+          Todos
         </button>
         <button
           type="button"
@@ -120,35 +118,16 @@ export const Categorias: React.FC = () => {
         </button>
       </div>
 
-      {/* Grilla de Categorías */}
+      {/* Grilla de Productos usando el componente ProductoCard */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        {categorias.map((cat) => (
-          <div
-            key={cat.id}
-            className="border-2 border-gray-400 bg-white overflow-hidden shadow-sm hover:shadow-md transition-shadow"
-          >
-            <div className="w-full h-36 overflow-hidden">
-              <img
-                src={cat.imagenUrl}
-                alt={cat.nombre}
-                className="w-full h-full object-cover"
-              />
-            </div>
-            <div className="p-3 bg-white flex flex-col gap-2 items-start">
-              <span className="font-bold text-nahuelpan-black text-sm block">
-                {cat.nombre}
-              </span>
-              {cat.disponible ? (
-                <span className="border border-green-500 text-green-500 text-[11px] px-2 py-0.5 rounded-sm font-medium">
-                  Disponible
-                </span>
-              ) : (
-                <span className="border border-red-600 text-red-600 text-[11px] px-2 py-0.5 rounded-sm font-medium">
-                  No disponible
-                </span>
-              )}
-            </div>
-          </div>
+        {productos.map((prod) => (
+          <ProductoCard
+            key={prod.id}
+            nombre={prod.nombre}
+            precio={prod.precio}
+            disponible={prod.disponible}
+            imagenUrl={prod.imagenUrl}
+          />
         ))}
       </div>
 

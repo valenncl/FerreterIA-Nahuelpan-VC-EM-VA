@@ -117,7 +117,7 @@ export const Inicio: React.FC = () => {
           <div className="w-full border border-gray-300 overflow-hidden shadow-sm">
             <iframe
               title="Ubicación Ferretería Nahuelpan"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2938.8238120302837!2d-65.3115!3d-43.2533!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDPCsDE1JzExLjkiUyA2NcKwMTgnNDEuNCJX!5e0!3m2!1ses!2sar!4v1620000000000!5m2!1ses!2sar"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2906.796630858022!2d-65.29894669576015!3d-43.23472336773806!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xbe015bcafd852f71%3A0xbd89405a2974c7e4!2sBuloneria%20y%20Ferreteria%20NAHUELPAN!5e0!3m2!1ses!2sar!4v1788790255222!5m2!1ses!2sar"
               width="100%"
               height="320"
               style={{ border: 0 }}

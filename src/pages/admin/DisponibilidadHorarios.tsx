@@ -1,8 +1,13 @@
-export function DisponibilidadHorarios() {
+interface DisponibilidadHorariosProps {
+  onLogout: () => void;
+}
+
+export function DisponibilidadHorarios({ onLogout }: DisponibilidadHorariosProps) {
   return (
     <main aria-label="Disponibilidad y gestión de horarios">
       <header>
         <h1>Panel Admin – Bulonería y Ferretería Nahuelpan</h1>
+        <button type="button" onClick={onLogout}>Cerrar sesión</button>
       </header>
 
       <section aria-labelledby="disponibilidad-titulo">

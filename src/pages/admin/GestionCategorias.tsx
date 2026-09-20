@@ -1,8 +1,13 @@
-export function GestionCategorias() {
+interface GestionCategoriasProps {
+  onLogout: () => void;
+}
+
+export function GestionCategorias({ onLogout }: GestionCategoriasProps) {
   return (
     <main aria-label="Gestión de categorías y contenido visual">
       <header>
         <h1>Panel Admin – Bulonería y Ferretería Nahuelpan</h1>
+        <button type="button" onClick={onLogout}>Cerrar sesión</button>
       </header>
 
       <section aria-labelledby="gestion-categorias-titulo">

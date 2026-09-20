@@ -1,7 +1,8 @@
-import React from 'react';
+interface AccesoAdminProps {
+  onLogin: () => void;
+}
 
-
-export function AccesoAdmin() {
+export function AccesoAdmin({ onLogin }: AccesoAdminProps) {
   return (
     <main 
       aria-label="Acceso administrativo"
@@ -41,7 +42,10 @@ export function AccesoAdmin() {
             </p>
           </div>
 
-          <form noValidate className="w-full space-y-4 mt-2">
+          <form noValidate className="w-full space-y-4 mt-2" onSubmit={(event) => {
+            event.preventDefault();
+            onLogin();
+          }}>
             
             <div>
               <label htmlFor="usuario-admin" className="block text-xs font-semibold text-gray-200 mb-1">

@@ -1,5 +1,3 @@
-import React from 'react';
-
 const LogoNahuelpan = ({ className = "w-8 h-8" }: { className?: string }) => (
   <svg className={className} viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
     <circle cx="50" cy="50" r="46" fill="black" stroke="#C92C23" strokeWidth="4"/>
@@ -8,7 +6,11 @@ const LogoNahuelpan = ({ className = "w-8 h-8" }: { className?: string }) => (
   </svg>
 );
 
-export function AdminPrincipal() {
+interface AdminPrincipalProps {
+  onLogout: () => void;
+}
+
+export function AdminPrincipal({ onLogout }: AdminPrincipalProps) {
   return (
     <div className="min-h-screen flex flex-col bg-[#F6F4EE] font-sans text-zinc-900">
       <header className="bg-black text-white px-4 sm:px-6 py-3 flex items-center justify-between border-b-2 border-red-700 shadow-md">
@@ -51,10 +53,10 @@ export function AdminPrincipal() {
               <span>🖼️</span>
               <span>Contenido Visual</span>
             </a>
-            <a href="#" className="flex items-center space-x-3 px-6 py-3 text-sm font-bold hover:bg-zinc-900 text-gray-200 transition-colors mt-2">
+            <button type="button" onClick={onLogout} className="flex items-center space-x-3 px-6 py-3 text-sm font-bold hover:bg-zinc-900 text-gray-200 transition-colors mt-2">
               <span>🚪</span>
               <span>Cerrar sesión</span>
-            </a>
+            </button>
           </nav>
         </aside>
 
@@ -163,7 +165,7 @@ export function AdminPrincipal() {
 
               <ul className="space-y-2.5">
                 <li>
-                  <button type="button" className="w-full text-left bg-white border border-black px-4 py-2.5 rounded-sm hover:bg-zinc-100 font-semibold text-xs sm:text-sm text-black transition-colors flex items-center space-x-2 shadow-sm">
+                  <button type="button" onClick={onLogout} className="w-full text-left bg-white border border-black px-4 py-2.5 rounded-sm hover:bg-zinc-100 font-semibold text-xs sm:text-sm text-black transition-colors flex items-center space-x-2 shadow-sm">
                     <span>+</span>
                     <span>Nueva categoría</span>
                   </button>

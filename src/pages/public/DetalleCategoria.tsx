@@ -1,12 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 export const DetalleCategoria: React.FC = () => {
+  // Lista de categorías para la barra de navegación rápida
+  const listaCategorias = [
+    'Herramientas',
+    'Pinturería',
+    'Sanitarios',
+    'Electricidad',
+    'Ferretería',
+    'Gas',
+    'Bulonería',
+    'Adhesivos',
+    'Materiales',
+    'Jardinería',
+  ];
+
+  // Estado para la categoría seleccionada
+  const [categoriaActiva, setCategoriaActiva] = useState<string>('Herramientas');
+
   const productoNombre = 'Taladro';
   const telefonoWhatsApp = '5492800000000'; // Reemplazar por el número real de la ferretería
   
   // Mensaje personalizado dinámico para WhatsApp
   const mensajeWhatsApp = encodeURIComponent(
-    `¡Hola! Quisiera consultar si tienen disponible el producto: ${productoNombre}`
+    `¡Hola! Quisiera consultar si tienen disponible el producto: ${productoNombre} (Categoría: ${categoriaActiva})`
   );
   const whatsappLink = `https://wa.me/${telefonoWhatsApp}?text=${mensajeWhatsApp}`;
 
@@ -38,6 +55,33 @@ export const DetalleCategoria: React.FC = () => {
 
   return (
     <div className="w-full max-w-6xl mx-auto px-4 py-6 text-nahuelpan-black font-sans">
+      
+      {/* 🔹 Selector con estética de referencia (Activa: Amarillo / Inactivas: Rojo) */}
+      <div className="flex flex-wrap items-center gap-3 mb-8">
+        <span className="font-bold text-sm sm:text-base text-black">
+          Filtrar por:
+        </span>
+        <div className="flex flex-wrap items-center gap-2">
+          {listaCategorias.map((cat) => {
+            const isActive = categoriaActiva === cat;
+            return (
+              <button
+                key={cat}
+                type="button"
+                onClick={() => setCategoriaActiva(cat)}
+                className={`px-4 py-1.5 rounded-full text-xs sm:text-sm font-bold transition-all shadow-sm ${
+                  isActive
+                    ? 'bg-amber-400 text-black border border-amber-500'
+                    : 'bg-red-800 text-white hover:bg-red-900 border border-red-900'
+                }`}
+              >
+                {cat}
+              </button>
+            );
+          })}
+        </div>
+      </div>
+
       {/* Sección Superior: Galería y Ficha Técnica */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-10">
         {/* Columna Izquierda: Galería e Imágenes */}

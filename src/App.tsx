@@ -1,5 +1,6 @@
 import { useState, type ReactNode } from 'react'
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
+import { LayoutPublico } from './components/LayoutPublico'
 import { Inicio } from './pages/public/Inicio'
 import { Nosotros } from './pages/public/Nosotros'
 import { Categorias } from './pages/public/Categorias'
@@ -24,10 +25,10 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Inicio />} />
-        <Route path="/nosotros" element={<Nosotros />} />
-        <Route path="/categorias" element={<Categorias />} />
-        <Route path="/categorias/:id" element={<DetalleCategoria />} />
+        <Route path="/" element={<LayoutPublico><Inicio /></LayoutPublico>} />
+        <Route path="/nosotros" element={<LayoutPublico><Nosotros /></LayoutPublico>} />
+        <Route path="/categorias" element={<LayoutPublico><Categorias /></LayoutPublico>} />
+        <Route path="/categorias/:id" element={<LayoutPublico><DetalleCategoria /></LayoutPublico>} />
         <Route
           path="/admin"
           element={<AccesoAdmin onLogin={() => setEstaAutenticado(true)} />}

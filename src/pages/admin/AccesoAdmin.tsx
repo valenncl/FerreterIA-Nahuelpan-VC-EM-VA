@@ -1,8 +1,29 @@
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 interface AccesoAdminProps {
   onLogin: () => void;
 }
 
 export function AccesoAdmin({ onLogin }: AccesoAdminProps) {
+  const navigate = useNavigate();
+  const [usuario, setUsuario] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState(false);
+
+  const manejarSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    if (usuario === 'admin' && password === 'admin123') {
+      setError(false);
+      onLogin();
+      navigate('/admin/dashboard');
+      return;
+    }
+
+    setError(true);
+  };
+
   return (
     <main 
       aria-label="Acceso administrativo"
@@ -42,10 +63,7 @@ export function AccesoAdmin({ onLogin }: AccesoAdminProps) {
             </p>
           </div>
 
-          <form noValidate className="w-full space-y-4 mt-2" onSubmit={(event) => {
-            event.preventDefault();
-            onLogin();
-          }}>
+          <form noValidate className="w-full space-y-4 mt-2" onSubmit={manejarSubmit}>
             
             <div>
               <label htmlFor="usuario-admin" className="block text-xs font-semibold text-gray-200 mb-1">
@@ -56,6 +74,8 @@ export function AccesoAdmin({ onLogin }: AccesoAdminProps) {
                 name="usuario"
                 type="text"
                 placeholder="Ingresar usuario o correo electrónico..."
+                value={usuario}
+                onChange={(event) => setUsuario(event.target.value)}
                 className="w-full bg-black text-white text-xs sm:text-sm px-3 py-2 border border-gray-400 rounded focus:outline-none focus:border-yellow-500 placeholder-gray-500"
               />
             </div>
@@ -69,6 +89,8 @@ export function AccesoAdmin({ onLogin }: AccesoAdminProps) {
                 name="password"
                 type="password"
                 placeholder="••••••••"
+                value={password}
+                onChange={(event) => setPassword(event.target.value)}
                 className="w-full bg-black text-white text-xs sm:text-sm px-3 py-2 border border-gray-400 rounded focus:outline-none focus:border-yellow-500 placeholder-gray-500"
               />
             </div>
@@ -96,16 +118,18 @@ export function AccesoAdmin({ onLogin }: AccesoAdminProps) {
             </button>
           </form>
 
-          <div 
-            role="alert" 
-            aria-live="polite" 
-            className="w-full border border-red-600 bg-black p-2 rounded flex items-center justify-center space-x-2 text-red-500 text-xs font-semibold mt-2"
-          >
-            <svg className="w-4 h-4 text-red-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
-            </svg>
-            <p>[mensaje de error: credenciales incorrectas]</p>
-          </div>
+          {error && (
+            <div 
+              role="alert" 
+              aria-live="polite" 
+              className="w-full border border-red-600 bg-black p-2 rounded flex items-center justify-center space-x-2 text-red-500 text-xs font-semibold mt-2"
+            >
+              <svg className="w-4 h-4 text-red-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77-1.333.192-3 1.732-3z"></path>
+              </svg>
+              <p>[mensaje de error: credenciales incorrectas]</p>
+            </div>
+          )}
 
           <p className="text-xs text-gray-300 flex items-center justify-center space-x-1 pt-2">
             <span className="text-yellow-500">🔒</span>

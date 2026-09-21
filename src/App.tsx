@@ -3,6 +3,7 @@ import { AccesoAdmin } from './pages/admin/AccesoAdmin'
 import { AdminPrincipal } from './pages/admin/AdminPrincipal'
 import { DisponibilidadHorarios } from './pages/admin/DisponibilidadHorarios'
 import { GestionCategorias } from './pages/admin/GestionCategorias'
+import { GestionProductos } from './pages/admin/GestionProductos'
 import { DetalleCategoria } from './pages/public/DetalleCategoria'
 
 function App() {
@@ -14,7 +15,7 @@ function App() {
       <AdminPrincipal />
       <DisponibilidadHorarios />
       <GestionCategorias />
-      <Inicio />
+      <GestionProductos />
     </main>
   );
 }

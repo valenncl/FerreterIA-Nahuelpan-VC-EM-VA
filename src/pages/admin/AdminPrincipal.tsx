@@ -29,7 +29,6 @@ export function AdminPrincipal({ onLogout }: AdminPrincipalProps) {
             Panel Admin – Bulonería y Ferretería Nahuelpan
           </h2>
         </div>
-
         <div className="flex items-center space-x-2 text-xs sm:text-sm font-medium hover:text-amber-400 cursor-pointer transition-colors">
           <svg className="w-5 h-5 text-gray-300" fill="currentColor" viewBox="0 0 20 20">
             <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
@@ -69,47 +68,35 @@ export function AdminPrincipal({ onLogout }: AdminPrincipalProps) {
           </nav>
         </aside>
 
-        <main aria-label="Dashboard principal" className="flex-1 p-6 space-y-8 overflow-x-auto">
+        <main aria-label="Dashboard principal" className="flex-1 p-4 sm:p-6 space-y-6 sm:space-y-8 overflow-x-auto max-w-[1600px]">
           <section aria-labelledby="resumen-titulo">
-            <h2 id="resumen-titulo" className="text-xl sm:text-2xl font-black text-black mb-6">
+            <h2 id="resumen-titulo" className="text-xl sm:text-2xl font-black text-black mb-4 sm:mb-6 border-l-4 border-[#F9B805] pl-3">
               Dashboard Principal
             </h2>
-
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-              <article aria-label="Total de categorías" className="bg-white border-2 border-black p-4 rounded-sm flex flex-col justify-between h-32 shadow-sm">
-                <div>
-                  <span className="text-xl">📦</span>
-                </div>
+              <article aria-label="Total de categorías" className="bg-white border-t-4 border-[#F9B805] border-x border-b border-black p-4 rounded-2xl flex flex-col justify-between min-h-32 shadow-sm hover:-translate-y-0.5 transition-transform">
+                <div><span className="text-xl">📦</span></div>
                 <div>
                   <p className="text-2xl font-black text-black leading-none">12</p>
                   <h3 className="text-xs font-semibold text-gray-500 mt-1">Total Categorías</h3>
                 </div>
               </article>
-
-              <article aria-label="Categorías disponibles" className="bg-white border-2 border-black p-4 rounded-sm flex flex-col justify-between h-32 shadow-sm">
-                <div>
-                  <span className="inline-flex items-center justify-center bg-green-500 text-white w-5 h-5 rounded-sm text-xs font-bold">✓</span>
-                </div>
+              <article aria-label="Categorías disponibles" className="bg-white border-t-4 border-[#F9B805] border-x border-b border-black p-4 rounded-2xl flex flex-col justify-between min-h-32 shadow-sm hover:-translate-y-0.5 transition-transform">
+                <div><span className="inline-flex items-center justify-center bg-green-500 text-white w-5 h-5 rounded-sm text-xs font-bold">✓</span></div>
                 <div>
                   <p className="text-2xl font-black text-black leading-none">9</p>
                   <h3 className="text-xs font-semibold text-gray-500 mt-1">Disponibles</h3>
                 </div>
               </article>
-
-              <article aria-label="Categorías no disponibles" className="bg-white border-2 border-black p-4 rounded-sm flex flex-col justify-between h-32 shadow-sm">
-                <div>
-                  <span className="text-red-600 font-black text-lg">✕</span>
-                </div>
+              <article aria-label="Categorías no disponibles" className="bg-white border-t-4 border-[#F9B805] border-x border-b border-black p-4 rounded-2xl flex flex-col justify-between min-h-32 shadow-sm hover:-translate-y-0.5 transition-transform">
+                <div><span className="text-red-600 font-black text-lg">✕</span></div>
                 <div>
                   <p className="text-2xl font-black text-black leading-none">3</p>
                   <h3 className="text-xs font-semibold text-gray-500 mt-1">No disponibles</h3>
                 </div>
               </article>
-
-              <article aria-label="Última edición" className="bg-white border-2 border-black p-4 rounded-sm flex flex-col justify-between h-32 shadow-sm">
-                <div>
-                  <span className="text-xl">📅</span>
-                </div>
+              <article aria-label="Última edición" className="bg-white border-t-4 border-[#F9B805] border-x border-b border-black p-4 rounded-2xl flex flex-col justify-between min-h-32 shadow-sm hover:-translate-y-0.5 transition-transform">
+                <div><span className="text-xl">📅</span></div>
                 <div>
                   <p className="text-2xl font-black text-black leading-none">Hoy</p>
                   <h3 className="text-xs font-semibold text-gray-500 mt-1">Última edición</h3>
@@ -120,12 +107,11 @@ export function AdminPrincipal({ onLogout }: AdminPrincipalProps) {
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
             <section aria-labelledby="actividad-titulo" className="lg:col-span-2">
-              <h2 id="actividad-titulo" className="text-lg font-extrabold text-black border-b-2 border-black pb-2 mb-4">
+              <h2 id="actividad-titulo" className="text-lg font-extrabold text-black border-b-2 border-[#F9B805] pb-2 mb-4">
                 Actividad Reciente
               </h2>
-
-              <div className="border border-black bg-white rounded-sm overflow-hidden shadow-sm">
-                <table className="w-full text-left border-collapse">
+              <div className="border border-black bg-white rounded-2xl overflow-x-auto shadow-sm">
+                <table className="w-full min-w-[500px] text-left border-collapse">
                   <thead>
                     <tr className="bg-zinc-900 text-white text-xs font-bold">
                       <th scope="col" className="p-3">Descripción</th>
@@ -137,30 +123,22 @@ export function AdminPrincipal({ onLogout }: AdminPrincipalProps) {
                     <tr>
                       <td className="p-3">Categoría Pinturas editada</td>
                       <td className="p-3 text-gray-500">Hoy, 10:32 am</td>
-                      <td className="p-3 text-right">
-                        <span className="inline-flex items-center justify-center bg-green-500 text-white w-4 h-4 rounded-sm text-xs font-bold">✓</span>
-                      </td>
+                      <td className="p-3 text-right"><span className="inline-flex items-center justify-center bg-green-500 text-white w-4 h-4 rounded-sm text-xs font-bold">✓</span></td>
                     </tr>
                     <tr>
                       <td className="p-3">Estado Plomería: No disp.</td>
                       <td className="p-3 text-gray-500">Ayer, 4:15 pm</td>
-                      <td className="p-3 text-right">
-                        <span className="text-amber-600 font-bold text-sm">⚠️</span>
-                      </td>
+                      <td className="p-3 text-right"><span className="text-amber-600 font-bold text-sm">⚠️</span></td>
                     </tr>
                     <tr>
                       <td className="p-3">Horario sábado actualizado</td>
                       <td className="p-3 text-gray-500">Ayer, 11:00 am</td>
-                      <td className="p-3 text-right">
-                        <span className="inline-flex items-center justify-center bg-green-500 text-white w-4 h-4 rounded-sm text-xs font-bold">✓</span>
-                      </td>
+                      <td className="p-3 text-right"><span className="inline-flex items-center justify-center bg-green-500 text-white w-4 h-4 rounded-sm text-xs font-bold">✓</span></td>
                     </tr>
                     <tr>
                       <td className="p-3">Nueva categoría: Adhesivos</td>
                       <td className="p-3 text-gray-500">Lun 5 ago</td>
-                      <td className="p-3 text-right">
-                        <span className="inline-flex items-center justify-center bg-green-500 text-white w-4 h-4 rounded-sm text-xs font-bold">✓</span>
-                      </td>
+                      <td className="p-3 text-right"><span className="inline-flex items-center justify-center bg-green-500 text-white w-4 h-4 rounded-sm text-xs font-bold">✓</span></td>
                     </tr>
                   </tbody>
                 </table>
@@ -168,40 +146,34 @@ export function AdminPrincipal({ onLogout }: AdminPrincipalProps) {
             </section>
 
             <aside aria-labelledby="acciones-rapidas-titulo" className="lg:col-span-1">
-              <h2 id="acciones-rapidas-titulo" className="text-lg font-extrabold text-black border-b-2 border-black pb-2 mb-4">
+              <h2 id="acciones-rapidas-titulo" className="text-lg font-extrabold text-black border-b-2 border-[#F9B805] pb-2 mb-4">
                 Acciones Rápidas
               </h2>
-
               <ul className="space-y-2.5">
                 <li>
-                  <Link to="/admin/categorias" className="w-full text-left bg-white border border-black px-4 py-2.5 rounded-sm hover:bg-zinc-100 font-semibold text-xs sm:text-sm text-black transition-colors flex items-center space-x-2 shadow-sm">
-                    <span>+</span>
-                    <span>Nueva categoría</span>
+                  <Link to="/admin/categorias" className="w-full text-left bg-[#F9B805] border border-black px-4 py-2.5 rounded-xl hover:brightness-95 font-semibold text-xs sm:text-sm text-black transition-colors flex items-center justify-start gap-2 shadow-sm">
+                    <span>+</span><span>Nueva categoría</span>
                   </Link>
                 </li>
                 <li>
-                  <Link to="/admin/disponibilidad" className="w-full text-left bg-white border border-black px-4 py-2.5 rounded-sm hover:bg-zinc-100 font-semibold text-xs sm:text-sm text-black transition-colors flex items-center space-x-2 shadow-sm">
-                    <span>✏️</span>
-                    <span>Editar disponibilidad</span>
+                  <Link to="/admin/disponibilidad" className="w-full text-left bg-white border border-black px-4 py-2.5 rounded-xl hover:bg-zinc-100 font-semibold text-xs sm:text-sm text-black transition-colors flex items-center justify-start gap-2 shadow-sm">
+                    <span>✏️</span><span>Editar disponibilidad</span>
                   </Link>
                 </li>
                 <li>
-                  <Link to="/admin/disponibilidad" className="w-full text-left bg-white border border-black px-4 py-2.5 rounded-sm hover:bg-zinc-100 font-semibold text-xs sm:text-sm text-black transition-colors flex items-center space-x-2 shadow-sm">
-                    <span>⏰</span>
-                    <span>Actualizar horario</span>
+                  <Link to="/admin/disponibilidad" className="w-full text-left bg-white border border-black px-4 py-2.5 rounded-xl hover:bg-zinc-100 font-semibold text-xs sm:text-sm text-black transition-colors flex items-center justify-start gap-2 shadow-sm">
+                    <span>⏰</span><span>Actualizar horario</span>
                   </Link>
                 </li>
                 <li>
-                  <Link to="/admin/categorias" className="w-full text-left bg-white border border-black px-4 py-2.5 rounded-sm hover:bg-zinc-100 font-semibold text-xs sm:text-sm text-black transition-colors flex items-center space-x-2 shadow-sm">
-                    <span>🖼️</span>
-                    <span>Subir imagen/video</span>
+                  <Link to="/admin/categorias" className="w-full text-left bg-white border border-black px-4 py-2.5 rounded-xl hover:bg-zinc-100 font-semibold text-xs sm:text-sm text-black transition-colors flex items-center justify-start gap-2 shadow-sm">
+                    <span>🖼️</span><span>Subir imagen/video</span>
                   </Link>
                 </li>
                 <li>
-                  <Link to="/admin" onClick={handleLogout} className="w-full text-left bg-white border border-black px-4 py-2.5 rounded-sm hover:bg-zinc-100 font-semibold text-xs sm:text-sm text-black transition-colors flex items-center space-x-2 shadow-sm">
-                    <span>🚪</span>
-                    <span>Cerrar sesión</span>
-                  </Link>
+                  <button type="button" onClick={handleLogout} className="w-full text-left bg-white border border-black px-4 py-2.5 rounded-xl hover:bg-zinc-100 font-semibold text-xs sm:text-sm text-black transition-colors flex items-center justify-start gap-2 shadow-sm">
+                    <span>🚪</span><span>Cerrar sesión</span>
+                  </button>
                 </li>
               </ul>
             </aside>

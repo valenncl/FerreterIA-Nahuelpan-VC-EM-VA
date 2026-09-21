@@ -9,6 +9,7 @@ import { AccesoAdmin } from './pages/admin/AccesoAdmin'
 import { AdminPrincipal } from './pages/admin/AdminPrincipal'
 import { DisponibilidadHorarios } from './pages/admin/DisponibilidadHorarios'
 import { GestionCategorias } from './pages/admin/GestionCategorias'
+import { GestionProductos } from './pages/admin/GestionProductos'
 
 interface RutaProtegidaProps {
   estaAutenticado: boolean
@@ -57,10 +58,18 @@ function App() {
             </RutaProtegida>
           }
         />
+        <Route
+          path="/admin/productos"
+          element={
+            <RutaProtegida estaAutenticado={estaAutenticado}>
+              <GestionProductos onLogout={() => setEstaAutenticado(false)} />
+            </RutaProtegida>
+          }
+        />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </BrowserRouter>
   )
 }
 
-export default App;
+export default App

@@ -1,4 +1,4 @@
-import React from 'react';
+import { Link } from 'react-router-dom';
 
 interface CategoriaItem {
   id: string;
@@ -7,7 +7,7 @@ interface CategoriaItem {
   imagenUrl: string;
 }
 
-export const Categorias: React.FC = () => {
+export const Categorias = () => {
   const categorias: CategoriaItem[] = [
     {
       id: '1',
@@ -123,7 +123,8 @@ export const Categorias: React.FC = () => {
       {/* Grilla de Categorías */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {categorias.map((cat) => (
-          <div
+          <Link
+            to={`/categorias/${cat.id}`}
             key={cat.id}
             className="border-2 border-gray-400 bg-white overflow-hidden shadow-sm hover:shadow-md transition-shadow"
           >
@@ -148,7 +149,7 @@ export const Categorias: React.FC = () => {
                 </span>
               )}
             </div>
-          </div>
+          </Link>
         ))}
       </div>
 

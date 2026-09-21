@@ -102,7 +102,7 @@ export const Inicio: React.FC = () => {
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {categoriasDestacadas.map((cat) => (
-            <CategoriaCard key={cat.id} nombre={cat.nombre} imagenUrl={cat.imagenUrl} />
+            <CategoriaCard key={cat.id} id={cat.id} nombre={cat.nombre} imagenUrl={cat.imagenUrl} />
           ))}
         </div>
       </section>

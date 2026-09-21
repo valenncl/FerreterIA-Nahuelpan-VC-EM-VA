@@ -1,13 +1,14 @@
-import React from 'react';
+import { Link } from 'react-router-dom';
 
 interface CategoriaCardProps {
+  id: string;
   nombre: string;
   imagenUrl: string;
 }
 
-export const CategoriaCard: React.FC<CategoriaCardProps> = ({ nombre, imagenUrl }) => {
+export const CategoriaCard = ({ id, nombre, imagenUrl }: CategoriaCardProps) => {
   return (
-    <div className="border border-gray-300 bg-white overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+    <Link to={`/categorias/${id}`} className="border border-gray-300 bg-white overflow-hidden shadow-sm hover:shadow-md transition-shadow">
       <div className="w-full h-36 sm:h-40 overflow-hidden">
         <img 
           src={imagenUrl} 
@@ -20,6 +21,6 @@ export const CategoriaCard: React.FC<CategoriaCardProps> = ({ nombre, imagenUrl 
           {nombre}
         </span>
       </div>
-    </div>
+    </Link>
   );
 };

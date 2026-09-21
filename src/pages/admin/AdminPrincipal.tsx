@@ -1,3 +1,5 @@
+import { Link, useNavigate } from 'react-router-dom';
+
 const LogoNahuelpan = ({ className = "w-8 h-8" }: { className?: string }) => (
   <svg className={className} viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
     <circle cx="50" cy="50" r="46" fill="black" stroke="#C92C23" strokeWidth="4"/>
@@ -11,6 +13,13 @@ interface AdminPrincipalProps {
 }
 
 export function AdminPrincipal({ onLogout }: AdminPrincipalProps) {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    onLogout();
+    navigate('/admin');
+  };
+
   return (
     <div className="min-h-screen flex flex-col bg-[#F6F4EE] font-sans text-zinc-900">
       <header className="bg-black text-white px-4 sm:px-6 py-3 flex items-center justify-between border-b-2 border-red-700 shadow-md">
@@ -33,27 +42,27 @@ export function AdminPrincipal({ onLogout }: AdminPrincipalProps) {
       <div className="flex flex-1">
         <aside className="w-56 bg-black text-white hidden md:flex flex-col border-r border-zinc-800 shrink-0">
           <nav className="flex flex-col py-4">
-            <a href="#" className="flex items-center space-x-3 px-6 py-3 text-sm font-bold border-b border-amber-500/30 hover:bg-zinc-900 text-white transition-colors">
+            <Link to="/admin/dashboard" className="flex items-center space-x-3 px-6 py-3 text-sm font-bold border-b border-amber-500/30 hover:bg-zinc-900 text-white transition-colors">
               <span>🏠</span>
               <span>Inicio</span>
-            </a>
-            <a href="#" className="flex items-center space-x-3 px-6 py-3 text-sm font-bold border-b border-amber-500/30 hover:bg-zinc-900 text-gray-200 transition-colors">
+            </Link>
+            <Link to="/admin/categorias" className="flex items-center space-x-3 px-6 py-3 text-sm font-bold border-b border-amber-500/30 hover:bg-zinc-900 text-gray-200 transition-colors">
               <span>📦</span>
               <span>Categorías</span>
-            </a>
-            <a href="#" className="flex items-center space-x-3 px-6 py-3 text-sm font-bold border-b border-amber-500/30 hover:bg-zinc-900 text-gray-200 transition-colors">
+            </Link>
+            <Link to="/admin/disponibilidad" className="flex items-center space-x-3 px-6 py-3 text-sm font-bold border-b border-amber-500/30 hover:bg-zinc-900 text-gray-200 transition-colors">
               <span>📋</span>
               <span>Disponibilidad</span>
-            </a>
-            <a href="#" className="flex items-center space-x-3 px-6 py-3 text-sm font-bold border-b border-amber-500/30 hover:bg-zinc-900 text-gray-200 transition-colors">
+            </Link>
+            <Link to="/admin/disponibilidad" className="flex items-center space-x-3 px-6 py-3 text-sm font-bold border-b border-amber-500/30 hover:bg-zinc-900 text-gray-200 transition-colors">
               <span>⏰</span>
               <span>Horarios</span>
-            </a>
-            <a href="#" className="flex items-center space-x-3 px-6 py-3 text-sm font-bold border-b border-amber-500/30 hover:bg-zinc-900 text-gray-200 transition-colors">
+            </Link>
+            <Link to="/admin/categorias" className="flex items-center space-x-3 px-6 py-3 text-sm font-bold border-b border-amber-500/30 hover:bg-zinc-900 text-gray-200 transition-colors">
               <span>🖼️</span>
               <span>Contenido Visual</span>
-            </a>
-            <button type="button" onClick={onLogout} className="flex items-center space-x-3 px-6 py-3 text-sm font-bold hover:bg-zinc-900 text-gray-200 transition-colors mt-2">
+            </Link>
+            <button type="button" onClick={handleLogout} className="flex items-center space-x-3 px-6 py-3 text-sm font-bold hover:bg-zinc-900 text-gray-200 transition-colors mt-2">
               <span>🚪</span>
               <span>Cerrar sesión</span>
             </button>
@@ -165,34 +174,34 @@ export function AdminPrincipal({ onLogout }: AdminPrincipalProps) {
 
               <ul className="space-y-2.5">
                 <li>
-                  <button type="button" onClick={onLogout} className="w-full text-left bg-white border border-black px-4 py-2.5 rounded-sm hover:bg-zinc-100 font-semibold text-xs sm:text-sm text-black transition-colors flex items-center space-x-2 shadow-sm">
+                  <Link to="/admin/categorias" className="w-full text-left bg-white border border-black px-4 py-2.5 rounded-sm hover:bg-zinc-100 font-semibold text-xs sm:text-sm text-black transition-colors flex items-center space-x-2 shadow-sm">
                     <span>+</span>
                     <span>Nueva categoría</span>
-                  </button>
+                  </Link>
                 </li>
                 <li>
-                  <button type="button" className="w-full text-left bg-white border border-black px-4 py-2.5 rounded-sm hover:bg-zinc-100 font-semibold text-xs sm:text-sm text-black transition-colors flex items-center space-x-2 shadow-sm">
+                  <Link to="/admin/disponibilidad" className="w-full text-left bg-white border border-black px-4 py-2.5 rounded-sm hover:bg-zinc-100 font-semibold text-xs sm:text-sm text-black transition-colors flex items-center space-x-2 shadow-sm">
                     <span>✏️</span>
                     <span>Editar disponibilidad</span>
-                  </button>
+                  </Link>
                 </li>
                 <li>
-                  <button type="button" className="w-full text-left bg-white border border-black px-4 py-2.5 rounded-sm hover:bg-zinc-100 font-semibold text-xs sm:text-sm text-black transition-colors flex items-center space-x-2 shadow-sm">
+                  <Link to="/admin/disponibilidad" className="w-full text-left bg-white border border-black px-4 py-2.5 rounded-sm hover:bg-zinc-100 font-semibold text-xs sm:text-sm text-black transition-colors flex items-center space-x-2 shadow-sm">
                     <span>⏰</span>
                     <span>Actualizar horario</span>
-                  </button>
+                  </Link>
                 </li>
                 <li>
-                  <button type="button" className="w-full text-left bg-white border border-black px-4 py-2.5 rounded-sm hover:bg-zinc-100 font-semibold text-xs sm:text-sm text-black transition-colors flex items-center space-x-2 shadow-sm">
+                  <Link to="/admin/categorias" className="w-full text-left bg-white border border-black px-4 py-2.5 rounded-sm hover:bg-zinc-100 font-semibold text-xs sm:text-sm text-black transition-colors flex items-center space-x-2 shadow-sm">
                     <span>🖼️</span>
                     <span>Subir imagen/video</span>
-                  </button>
+                  </Link>
                 </li>
                 <li>
-                  <button type="button" className="w-full text-left bg-white border border-black px-4 py-2.5 rounded-sm hover:bg-zinc-100 font-semibold text-xs sm:text-sm text-black transition-colors flex items-center space-x-2 shadow-sm">
+                  <Link to="/admin" onClick={handleLogout} className="w-full text-left bg-white border border-black px-4 py-2.5 rounded-sm hover:bg-zinc-100 font-semibold text-xs sm:text-sm text-black transition-colors flex items-center space-x-2 shadow-sm">
                     <span>🚪</span>
                     <span>Cerrar sesión</span>
-                  </button>
+                  </Link>
                 </li>
               </ul>
             </aside>

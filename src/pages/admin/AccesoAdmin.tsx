@@ -2,7 +2,7 @@ export function AccesoAdmin() {
   return (
     <main 
       aria-label="Acceso administrativo"
-      className="min-h-screen flex flex-col bg-white font-sans text-white"
+      className="min-h-screen flex flex-col bg-[#F6F4EE] font-sans text-white"
     >
 
       <header className="bg-black py-3 px-4 border-t-2 border-b-2 border-red-700 text-center shadow-md">
@@ -17,7 +17,7 @@ export function AccesoAdmin() {
       >
         <div 
           aria-label="Formulario de acceso administrativo"
-          className="bg-black border-4 border-yellow-500 rounded-sm p-6 sm:p-8 w-full max-w-md flex flex-col items-center space-y-4 shadow-2xl"
+          className="bg-black border-2 border-[#F9B805] rounded-3xl p-6 sm:p-8 w-full max-w-md flex flex-col items-center space-y-4 shadow-2xl"
         >
           
 
@@ -49,7 +49,7 @@ export function AccesoAdmin() {
                 name="usuario"
                 type="text"
                 placeholder="Ingresar usuario o correo electrónico..."
-                className="w-full bg-black text-white text-xs sm:text-sm px-3 py-2 border border-gray-400 rounded focus:outline-none focus:border-yellow-500 placeholder-gray-500"
+                className="w-full bg-black text-white text-xs sm:text-sm px-3 py-2.5 border border-gray-400 rounded-xl focus:outline-none focus:border-[#F9B805] placeholder-gray-500"
               />
             </div>
 
@@ -62,7 +62,7 @@ export function AccesoAdmin() {
                 name="password"
                 type="password"
                 placeholder="••••••••"
-                className="w-full bg-black text-white text-xs sm:text-sm px-3 py-2 border border-gray-400 rounded focus:outline-none focus:border-yellow-500 placeholder-gray-500"
+                className="w-full bg-black text-white text-xs sm:text-sm px-3 py-2.5 border border-gray-400 rounded-xl focus:outline-none focus:border-[#F9B805] placeholder-gray-500"
               />
             </div>
 
@@ -71,7 +71,7 @@ export function AccesoAdmin() {
                 <input 
                   type="checkbox" 
                   name="recordarme" 
-                  className="accent-yellow-500 rounded border-gray-600 bg-black"
+                  className="accent-[#F9B805] rounded border-gray-600 bg-black"
                 />
                 <span>Recordarme</span>
               </label>
@@ -83,7 +83,7 @@ export function AccesoAdmin() {
 
             <button 
               type="submit" 
-              className="w-full text-center text-white text-base font-semibold py-2 mt-2 hover:text-yellow-400 transition-colors duration-150 focus:outline-none"
+              className="w-full text-center bg-[#F9B805] text-black rounded-xl text-base font-semibold py-2.5 mt-2 hover:brightness-95 transition-colors duration-150 focus:outline-none"
             >
               Iniciar Sesión
             </button>
@@ -92,7 +92,7 @@ export function AccesoAdmin() {
           <div 
             role="alert" 
             aria-live="polite" 
-            className="w-full border border-red-600 bg-black p-2 rounded flex items-center justify-center space-x-2 text-red-500 text-xs font-semibold mt-2"
+            className="w-full border border-red-600 bg-black p-3 rounded-xl flex items-center justify-center space-x-2 text-red-500 text-xs font-semibold mt-2"
           >
             <svg className="w-4 h-4 text-red-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>

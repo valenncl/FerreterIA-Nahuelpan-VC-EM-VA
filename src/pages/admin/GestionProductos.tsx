@@ -34,13 +34,13 @@ export function GestionProductos() {
         <main aria-label="Gestión de productos" className="flex-1 p-4 sm:p-6">
           <section className="bg-[#f3f2ee] border border-black rounded-sm p-4 sm:p-5 shadow-sm h-full max-w-[1500px] mx-auto">
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-4">
-              <h2 className="text-2xl sm:text-3xl font-black text-black m-0">
+              <h2 className="text-2xl sm:text-3xl font-black text-black m-0 border-l-4 border-[#F9B805] pl-3">
                 Gestión de Productos
               </h2>
 
               <button
                 type="button"
-                className="bg-black text-white text-xs sm:text-sm font-bold px-4 py-2 rounded-sm border border-black hover:text-yellow-400 transition-colors"
+                className="bg-[#F9B805] text-black text-xs sm:text-sm font-bold px-4 py-2 rounded-xl border border-black hover:brightness-95 transition-colors"
               >
                 + Nuevo Producto
               </button>
@@ -52,7 +52,7 @@ export function GestionProductos() {
                 <span>Filtrar por categoría</span>
                 <select
                   id="filtro-categoria"
-                  className="border border-black bg-white px-3 py-2 text-sm text-zinc-800 rounded-sm w-full sm:w-[220px] normal-case tracking-normal"
+                  className="border border-black bg-white px-3 py-2 text-sm text-zinc-800 rounded-xl w-full sm:w-[220px] normal-case tracking-normal"
                   defaultValue="Todas"
                 >
                   <option>Todas</option>
@@ -65,7 +65,7 @@ export function GestionProductos() {
             </div>
 
             <div className="grid grid-cols-1 xl:grid-cols-[minmax(0,1fr)_340px] gap-5 items-start">
-              <div className="hidden xl:block border border-black bg-white rounded-sm overflow-hidden">
+              <div className="hidden xl:block border border-black bg-white rounded-2xl overflow-hidden shadow-sm">
                 <table className="w-full border-collapse table-fixed">
                   <thead>
                     <tr className="bg-zinc-900 text-white text-xs font-bold">
@@ -84,8 +84,8 @@ export function GestionProductos() {
                       </td>
                       <td className="p-3 text-right">
                         <div className="flex justify-end gap-2">
-                          <button type="button" className="text-xs font-bold text-black border border-black px-3 py-1.5 rounded-sm hover:bg-zinc-100">Editar</button>
-                          <button type="button" className="text-xs font-bold text-red-700 border border-red-700 px-3 py-1.5 rounded-sm hover:bg-red-50">Eliminar</button>
+                          <button type="button" className="text-xs font-bold text-black border border-black px-3 py-1.5 rounded-xl hover:bg-zinc-100">Editar</button>
+                          <button type="button" className="text-xs font-bold text-red-700 border border-red-700 px-3 py-1.5 rounded-xl hover:bg-red-50">Eliminar</button>
                         </div>
                       </td>
                     </tr>
@@ -125,7 +125,7 @@ export function GestionProductos() {
                   ['Pintura Interior', 'Pinturas', 'Pintura lavable para interiores de alta cobertura', 'Activo'],
                   ['Llave inglesa', 'Herramientas', 'Llave de acero forjado para trabajo pesado', 'Inactivo'],
                 ].map(([nombre, categoria, descripcion, estado]) => (
-                  <article key={nombre} className="bg-white border border-black rounded-sm p-4 shadow-sm">
+                  <article key={nombre} className="bg-white border border-black rounded-2xl p-4 shadow-sm">
                     <div className="flex items-start justify-between gap-3">
                       <div className="min-w-0">
                         <h3 className="font-black text-black truncate">{nombre}</h3>
@@ -136,16 +136,16 @@ export function GestionProductos() {
                     <div className="mt-4 flex items-center justify-between gap-3 border-t border-zinc-200 pt-3">
                       <span className="text-xs font-bold text-zinc-600">{categoria}</span>
                       <div className="flex gap-2">
-                        <button type="button" className="text-xs font-bold text-black border border-black px-3 py-1.5 rounded-sm">Editar</button>
-                        <button type="button" className="text-xs font-bold text-red-700 border border-red-700 px-3 py-1.5 rounded-sm">Eliminar</button>
+                        <button type="button" className="text-xs font-bold text-black border border-black px-3 py-1.5 rounded-xl">Editar</button>
+                        <button type="button" className="text-xs font-bold text-red-700 border border-red-700 px-3 py-1.5 rounded-xl">Eliminar</button>
                       </div>
                     </div>
                   </article>
                 ))}
               </div>
 
-              <aside aria-labelledby="editar-producto-titulo" className="bg-white border border-black rounded-sm p-4 sm:p-5 shadow-sm">
-                <h3 id="editar-producto-titulo" className="text-lg font-black text-black mb-4">
+              <aside aria-labelledby="editar-producto-titulo" className="bg-white border border-black rounded-2xl p-4 sm:p-5 shadow-sm">
+                <h3 id="editar-producto-titulo" className="text-lg font-black text-black mb-4 border-b-2 border-[#F9B805] pb-2">
                   Nuevo producto
                 </h3>
 
@@ -159,7 +159,7 @@ export function GestionProductos() {
                       name="nombreProducto"
                       type="text"
                       placeholder="Ingresar nombre del producto"
-                      className="w-full border border-gray-400 bg-white text-sm px-3 py-2 rounded-sm focus:outline-none focus:border-black"
+                      className="w-full border border-gray-400 bg-white text-sm px-3 py-2 rounded-xl focus:outline-none focus:border-black"
                     />
                   </div>
 
@@ -170,7 +170,7 @@ export function GestionProductos() {
                     <select
                       id="producto-categoria"
                       name="categoriaProducto"
-                      className="w-full border border-gray-400 bg-white text-sm px-3 py-2 rounded-sm focus:outline-none focus:border-black"
+                      className="w-full border border-gray-400 bg-white text-sm px-3 py-2 rounded-xl focus:outline-none focus:border-black"
                       defaultValue="Herramientas"
                     >
                       <option>Herramientas</option>
@@ -189,16 +189,16 @@ export function GestionProductos() {
                       name="descripcionProducto"
                       placeholder="Ingresar descripción del producto"
                       rows={4}
-                      className="w-full border border-gray-400 bg-white text-sm px-3 py-2 rounded-sm resize-none focus:outline-none focus:border-black"
+                      className="w-full border border-gray-400 bg-white text-sm px-3 py-2 rounded-xl resize-none focus:outline-none focus:border-black"
                     />
                   </div>
 
-                  <fieldset className="border border-dashed border-gray-400 p-3 rounded-sm">
+                  <fieldset className="border border-dashed border-gray-400 p-3 rounded-xl">
                     <legend className="px-1 text-xs font-bold text-black">Imagen principal</legend>
                     <input type="file" accept="image/*" className="text-xs text-gray-600" />
                   </fieldset>
 
-                  <fieldset className="border border-dashed border-gray-400 p-3 rounded-sm">
+                  <fieldset className="border border-dashed border-gray-400 p-3 rounded-xl">
                     <legend className="px-1 text-xs font-bold text-black">Galería</legend>
                     <input type="file" accept="image/*" multiple className="text-xs text-gray-600" />
                   </fieldset>
@@ -210,7 +210,7 @@ export function GestionProductos() {
                     <select
                       id="producto-estado"
                       name="estadoProducto"
-                      className="w-full border border-gray-400 bg-white text-sm px-3 py-2 rounded-sm focus:outline-none focus:border-black"
+                      className="w-full border border-gray-400 bg-white text-sm px-3 py-2 rounded-xl focus:outline-none focus:border-black"
                       defaultValue="Activo"
                     >
                       <option>Activo</option>
@@ -219,10 +219,10 @@ export function GestionProductos() {
                   </div>
 
                   <div className="flex flex-col-reverse sm:flex-row sm:justify-end gap-2 pt-2">
-                    <button type="button" className="border border-black text-black px-4 py-2 text-xs font-bold rounded-sm">
+                    <button type="button" className="border border-black text-black px-4 py-2 text-xs font-bold rounded-xl">
                       Cancelar
                     </button>
-                    <button type="submit" className="bg-black text-white px-4 py-2 text-xs font-bold rounded-sm hover:text-yellow-400 transition-colors">
+                    <button type="submit" className="bg-[#F9B805] text-black px-4 py-2 text-xs font-bold rounded-xl hover:brightness-95 transition-colors">
                       Guardar producto
                     </button>
                   </div>

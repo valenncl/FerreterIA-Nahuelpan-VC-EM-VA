@@ -46,11 +46,12 @@ export function DisponibilidadHorarios() {
         <AdminSidebar active="disponibilidad" />
 
         <main aria-label="Disponibilidad y gestión de horarios" className="flex-1 p-4 sm:p-6">
-          <h2 className="text-2xl sm:text-3xl font-black text-black mb-4 sm:mb-6">Disponibilidad y Gestión de Horarios</h2>
+          <h2 className="text-2xl sm:text-3xl font-black text-black mb-4 sm:mb-6 border-l-4 border-[#F9B805] pl-3">Disponibilidad y Gestión de Horarios</h2>
 
           <div className="grid grid-cols-1 xl:grid-cols-[1.55fr_1fr] gap-4 items-start">
-            <section aria-labelledby="disponibilidad-categoria-titulo" className="bg-white border border-black rounded-sm p-4 shadow-sm">
-              <h3 id="disponibilidad-categoria-titulo" className="text-xl font-extrabold text-black mb-4 border-b-2 border-black pb-2">
+            <div className="space-y-4">
+            <section aria-labelledby="disponibilidad-categoria-titulo" className="bg-white border border-black rounded-2xl p-4 shadow-sm">
+              <h3 id="disponibilidad-categoria-titulo" className="text-xl font-extrabold text-black mb-4 border-b-2 border-[#F9B805] pb-2">
                 Disponibilidad por Categoría
               </h3>
 
@@ -71,7 +72,7 @@ export function DisponibilidadHorarios() {
                     </td>
                     <td className="p-2">
                       <button type="button" role="switch" aria-checked={categoriasActivas.Herramientas} onClick={() => alternarCategoria('Herramientas')} className="inline-flex items-center gap-2">
-                        <span className={`relative inline-flex h-6 w-11 items-center rounded-full border border-black transition-colors ${categoriasActivas.Herramientas ? 'bg-green-600' : 'bg-zinc-300'}`}>
+                        <span className={`relative inline-flex h-6 w-11 items-center rounded-full border border-black transition-colors ${categoriasActivas.Herramientas ? 'bg-[#F9B805]' : 'bg-zinc-300'}`}>
                           <span className={`inline-block h-4 w-4 rounded-full bg-white shadow-sm transition-transform ${categoriasActivas.Herramientas ? 'translate-x-5' : 'translate-x-1'}`} />
                         </span>
                         <span className="text-xs font-bold">{categoriasActivas.Herramientas ? 'Activo' : 'Inactivo'}</span>
@@ -85,7 +86,7 @@ export function DisponibilidadHorarios() {
                     </td>
                     <td className="p-2">
                       <button type="button" role="switch" aria-checked={categoriasActivas.Pinturas} onClick={() => alternarCategoria('Pinturas')} className="inline-flex items-center gap-2">
-                        <span className={`relative inline-flex h-6 w-11 items-center rounded-full border border-black transition-colors ${categoriasActivas.Pinturas ? 'bg-green-600' : 'bg-zinc-300'}`}>
+                        <span className={`relative inline-flex h-6 w-11 items-center rounded-full border border-black transition-colors ${categoriasActivas.Pinturas ? 'bg-[#F9B805]' : 'bg-zinc-300'}`}>
                           <span className={`inline-block h-4 w-4 rounded-full bg-white shadow-sm transition-transform ${categoriasActivas.Pinturas ? 'translate-x-5' : 'translate-x-1'}`} />
                         </span>
                         <span className="text-xs font-bold">{categoriasActivas.Pinturas ? 'Activo' : 'Inactivo'}</span>
@@ -99,7 +100,7 @@ export function DisponibilidadHorarios() {
                     </td>
                     <td className="p-2">
                       <button type="button" role="switch" aria-checked={categoriasActivas.Plomería} onClick={() => alternarCategoria('Plomería')} className="inline-flex items-center gap-2">
-                        <span className={`relative inline-flex h-6 w-11 items-center rounded-full border border-black transition-colors ${categoriasActivas.Plomería ? 'bg-green-600' : 'bg-zinc-300'}`}>
+                        <span className={`relative inline-flex h-6 w-11 items-center rounded-full border border-black transition-colors ${categoriasActivas.Plomería ? 'bg-[#F9B805]' : 'bg-zinc-300'}`}>
                           <span className={`inline-block h-4 w-4 rounded-full bg-white shadow-sm transition-transform ${categoriasActivas.Plomería ? 'translate-x-5' : 'translate-x-1'}`} />
                         </span>
                         <span className="text-xs font-bold">{categoriasActivas.Plomería ? 'Activo' : 'Inactivo'}</span>
@@ -110,9 +111,40 @@ export function DisponibilidadHorarios() {
               </table>
               </div>
             </section>
+            <section aria-labelledby="cierre-temporal-titulo" className="bg-white border border-black rounded-2xl p-4 shadow-sm w-full">
+              <h3 id="cierre-temporal-titulo" className="text-xl font-extrabold text-black mb-4 border-b-2 border-[#F9B805] pb-2">
+                Cierre Temporal
+              </h3>
 
-            <section aria-labelledby="horario-atencion-titulo" className="bg-white border border-black rounded-sm p-4 shadow-sm">
-              <h3 id="horario-atencion-titulo" className="text-xl font-extrabold text-black mb-4 border-b-2 border-black pb-2">
+              <form className="space-y-4">
+                <label className="flex items-center gap-2 text-sm font-medium text-zinc-800">
+                  <input type="checkbox" name="reporte-cierre" className="accent-black" />
+                  Reportar cierre temporal del negocio
+                </label>
+
+                <div>
+                  <label htmlFor="motivo-cierre" className="block text-xs font-bold text-black mb-1">Motivo del cierre</label>
+                  <input id="motivo-cierre" name="motivoCierre" type="text" placeholder="Ingresar motivo del cierre" className="w-full border border-gray-400 bg-white text-sm px-3 py-2 rounded-xl focus:outline-none focus:border-black" />
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label htmlFor="fecha-inicio-cierre" className="block text-xs font-bold text-black mb-1">Fecha de inicio</label>
+                    <input id="fecha-inicio-cierre" name="fechaInicio" type="date" className="w-full border border-gray-400 bg-white text-sm px-3 py-2 rounded-xl" />
+                  </div>
+                  <div>
+                    <label htmlFor="fecha-reapertura" className="block text-xs font-bold text-black mb-1">Fecha de reapertura</label>
+                    <input id="fecha-reapertura" name="fechaReapertura" type="date" className="w-full border border-gray-400 bg-white text-sm px-3 py-2 rounded-xl" />
+                  </div>
+                </div>
+
+                <button type="submit" className="w-full bg-black text-white text-sm font-bold py-2 rounded-xl border border-black hover:text-yellow-400 transition-colors">Confirmar cierre temporal</button>
+              </form>
+            </section>
+            </div>
+
+            <section aria-labelledby="horario-atencion-titulo" className="bg-white border border-black rounded-2xl p-4 shadow-sm">
+              <h3 id="horario-atencion-titulo" className="text-xl font-extrabold text-black mb-4 border-b-2 border-[#F9B805] pb-2">
                 Horario de Atención
               </h3>
 
@@ -139,8 +171,8 @@ export function DisponibilidadHorarios() {
                     ].map(([dia, apertura, cierre]) => (
                       <tr key={dia}>
                         <th scope="row" className="p-2 font-bold text-left">{dia}</th>
-                        <td className="p-2"><input type="time" defaultValue={apertura} className="w-full border border-gray-400 rounded-sm px-2 py-1 bg-white" /></td>
-                        <td className="p-2"><input type="time" defaultValue={cierre} className="w-full border border-gray-400 rounded-sm px-2 py-1 bg-white" /></td>
+                        <td className="p-2"><input type="time" defaultValue={apertura} className="w-full border border-gray-400 rounded-xl px-2 py-1 bg-white" /></td>
+                        <td className="p-2"><input type="time" defaultValue={cierre} className="w-full border border-gray-400 rounded-xl px-2 py-1 bg-white" /></td>
                         <td className="p-2"><input type="checkbox" className="accent-gray-600" /></td>
                       </tr>
                     ))}
@@ -148,58 +180,12 @@ export function DisponibilidadHorarios() {
                 </table>
                 </div>
 
-                <button type="submit" className="w-full bg-black text-white text-sm font-bold py-2 rounded-sm border border-black hover:text-yellow-400 transition-colors">
+                <button type="submit" className="w-full bg-black text-white text-sm font-bold py-2 rounded-xl border border-black hover:text-yellow-400 transition-colors">
                   Guardar horarios
                 </button>
               </form>
             </section>
           </div>
-
-          <section aria-labelledby="cierre-temporal-titulo" className="mt-4 bg-white border border-black rounded-sm p-4 shadow-sm max-w-xl w-full">
-            <h3 id="cierre-temporal-titulo" className="text-xl font-extrabold text-black mb-4 border-b-2 border-black pb-2">
-              Cierre Temporal
-            </h3>
-
-            <form className="space-y-4">
-              <label className="flex items-center gap-2 text-sm font-medium text-zinc-800">
-                <input type="checkbox" name="reporte-cierre" className="accent-black" />
-                Reportar cierre temporal del negocio
-              </label>
-
-              <div>
-                <label htmlFor="motivo-cierre" className="block text-xs font-bold text-black mb-1">
-                  Motivo del cierre
-                </label>
-                <input
-                  id="motivo-cierre"
-                  name="motivoCierre"
-                  type="text"
-                  placeholder="Ingresar motivo del cierre"
-                  className="w-full border border-gray-400 bg-white text-sm px-3 py-2 rounded-sm focus:outline-none focus:border-black"
-                />
-              </div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                  <label htmlFor="fecha-inicio-cierre" className="block text-xs font-bold text-black mb-1">
-                    Fecha de inicio
-                  </label>
-                  <input id="fecha-inicio-cierre" name="fechaInicio" type="date" className="w-full border border-gray-400 bg-white text-sm px-3 py-2 rounded-sm" />
-                </div>
-
-                <div>
-                  <label htmlFor="fecha-reapertura" className="block text-xs font-bold text-black mb-1">
-                    Fecha de reapertura
-                  </label>
-                  <input id="fecha-reapertura" name="fechaReapertura" type="date" className="w-full border border-gray-400 bg-white text-sm px-3 py-2 rounded-sm" />
-                </div>
-              </div>
-
-              <button type="submit" className="w-full bg-black text-white text-sm font-bold py-2 rounded-sm border border-black hover:text-yellow-400 transition-colors">
-                Confirmar cierre temporal
-              </button>
-            </form>
-          </section>
         </main>
       </div>
     </div>

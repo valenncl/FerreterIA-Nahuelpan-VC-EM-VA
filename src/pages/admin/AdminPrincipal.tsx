@@ -31,14 +31,14 @@ export function AdminPrincipal() {
       <div className="flex flex-1">
         <AdminSidebar active="inicio" />
 
-        <main aria-label="Dashboard principal" className="flex-1 p-4 sm:p-6 space-y-6 sm:space-y-8 overflow-x-auto">
+        <main aria-label="Dashboard principal" className="flex-1 p-4 sm:p-6 space-y-6 sm:space-y-8 overflow-x-auto max-w-[1600px]">
           <section aria-labelledby="resumen-titulo">
-            <h2 id="resumen-titulo" className="text-xl sm:text-2xl font-black text-black mb-4 sm:mb-6">
+            <h2 id="resumen-titulo" className="text-xl sm:text-2xl font-black text-black mb-4 sm:mb-6 border-l-4 border-[#F9B805] pl-3">
               Dashboard Principal
             </h2>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-              <article aria-label="Total de categorías" className="bg-white border-2 border-black p-4 rounded-sm flex flex-col justify-between min-h-32 shadow-sm">
+              <article aria-label="Total de categorías" className="bg-white border-t-4 border-[#F9B805] border-x border-b border-black p-4 rounded-2xl flex flex-col justify-between min-h-32 shadow-sm hover:-translate-y-0.5 transition-transform">
                 <div>
                   <span className="text-xl">📦</span>
                 </div>
@@ -48,7 +48,7 @@ export function AdminPrincipal() {
                 </div>
               </article>
 
-              <article aria-label="Categorías disponibles" className="bg-white border-2 border-black p-4 rounded-sm flex flex-col justify-between min-h-32 shadow-sm">
+              <article aria-label="Categorías disponibles" className="bg-white border-t-4 border-[#F9B805] border-x border-b border-black p-4 rounded-2xl flex flex-col justify-between min-h-32 shadow-sm hover:-translate-y-0.5 transition-transform">
                 <div>
                   <span className="inline-flex items-center justify-center bg-green-500 text-white w-5 h-5 rounded-sm text-xs font-bold">✓</span>
                 </div>
@@ -58,7 +58,7 @@ export function AdminPrincipal() {
                 </div>
               </article>
 
-              <article aria-label="Categorías no disponibles" className="bg-white border-2 border-black p-4 rounded-sm flex flex-col justify-between min-h-32 shadow-sm">
+              <article aria-label="Categorías no disponibles" className="bg-white border-t-4 border-[#F9B805] border-x border-b border-black p-4 rounded-2xl flex flex-col justify-between min-h-32 shadow-sm hover:-translate-y-0.5 transition-transform">
                 <div>
                   <span className="text-red-600 font-black text-lg">✕</span>
                 </div>
@@ -68,7 +68,7 @@ export function AdminPrincipal() {
                 </div>
               </article>
 
-              <article aria-label="Última edición" className="bg-white border-2 border-black p-4 rounded-sm flex flex-col justify-between min-h-32 shadow-sm">
+              <article aria-label="Última edición" className="bg-white border-t-4 border-[#F9B805] border-x border-b border-black p-4 rounded-2xl flex flex-col justify-between min-h-32 shadow-sm hover:-translate-y-0.5 transition-transform">
                 <div>
                   <span className="text-xl">📅</span>
                 </div>
@@ -82,11 +82,11 @@ export function AdminPrincipal() {
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
             <section aria-labelledby="actividad-titulo" className="lg:col-span-2">
-              <h2 id="actividad-titulo" className="text-lg font-extrabold text-black border-b-2 border-black pb-2 mb-4">
+              <h2 id="actividad-titulo" className="text-lg font-extrabold text-black border-b-2 border-[#F9B805] pb-2 mb-4">
                 Actividad Reciente
               </h2>
 
-              <div className="border border-black bg-white rounded-sm overflow-x-auto shadow-sm">
+              <div className="border border-black bg-white rounded-2xl overflow-x-auto shadow-sm">
                 <table className="w-full min-w-[500px] text-left border-collapse">
                   <thead>
                     <tr className="bg-zinc-900 text-white text-xs font-bold">
@@ -130,37 +130,37 @@ export function AdminPrincipal() {
             </section>
 
             <aside aria-labelledby="acciones-rapidas-titulo" className="lg:col-span-1">
-              <h2 id="acciones-rapidas-titulo" className="text-lg font-extrabold text-black border-b-2 border-black pb-2 mb-4">
+              <h2 id="acciones-rapidas-titulo" className="text-lg font-extrabold text-black border-b-2 border-[#F9B805] pb-2 mb-4">
                 Acciones Rápidas
               </h2>
 
               <ul className="space-y-2.5">
                 <li>
-                  <button type="button" className="w-full text-left bg-white border border-black px-4 py-2.5 rounded-sm hover:bg-zinc-100 font-semibold text-xs sm:text-sm text-black transition-colors flex items-center justify-start gap-2 shadow-sm">
+                  <button type="button" className="w-full text-left bg-[#F9B805] border border-black px-4 py-2.5 rounded-xl hover:brightness-95 font-semibold text-xs sm:text-sm text-black transition-colors flex items-center justify-start gap-2 shadow-sm">
                     <span>+</span>
                     <span>Nueva categoría</span>
                   </button>
                 </li>
                 <li>
-                  <button type="button" className="w-full text-left bg-white border border-black px-4 py-2.5 rounded-sm hover:bg-zinc-100 font-semibold text-xs sm:text-sm text-black transition-colors flex items-center justify-start gap-2 shadow-sm">
+                  <button type="button" className="w-full text-left bg-white border border-black px-4 py-2.5 rounded-xl hover:bg-zinc-100 font-semibold text-xs sm:text-sm text-black transition-colors flex items-center justify-start gap-2 shadow-sm">
                     <span>✏️</span>
                     <span>Editar disponibilidad</span>
                   </button>
                 </li>
                 <li>
-                  <button type="button" className="w-full text-left bg-white border border-black px-4 py-2.5 rounded-sm hover:bg-zinc-100 font-semibold text-xs sm:text-sm text-black transition-colors flex items-center justify-start gap-2 shadow-sm">
+                  <button type="button" className="w-full text-left bg-white border border-black px-4 py-2.5 rounded-xl hover:bg-zinc-100 font-semibold text-xs sm:text-sm text-black transition-colors flex items-center justify-start gap-2 shadow-sm">
                     <span>⏰</span>
                     <span>Actualizar horario</span>
                   </button>
                 </li>
                 <li>
-                  <button type="button" className="w-full text-left bg-white border border-black px-4 py-2.5 rounded-sm hover:bg-zinc-100 font-semibold text-xs sm:text-sm text-black transition-colors flex items-center justify-start gap-2 shadow-sm">
+                  <button type="button" className="w-full text-left bg-white border border-black px-4 py-2.5 rounded-xl hover:bg-zinc-100 font-semibold text-xs sm:text-sm text-black transition-colors flex items-center justify-start gap-2 shadow-sm">
                     <span>🖼️</span>
                     <span>Subir imagen/video</span>
                   </button>
                 </li>
                 <li>
-                  <button type="button" className="w-full text-left bg-white border border-black px-4 py-2.5 rounded-sm hover:bg-zinc-100 font-semibold text-xs sm:text-sm text-black transition-colors flex items-center justify-start gap-2 shadow-sm">
+                  <button type="button" className="w-full text-left bg-white border border-black px-4 py-2.5 rounded-xl hover:bg-zinc-100 font-semibold text-xs sm:text-sm text-black transition-colors flex items-center justify-start gap-2 shadow-sm">
                     <span>🚪</span>
                     <span>Cerrar sesión</span>
                   </button>

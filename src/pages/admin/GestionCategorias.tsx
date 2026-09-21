@@ -32,22 +32,22 @@ export function GestionCategorias() {
         <AdminSidebar active="categorias" />
 
         <main aria-label="Gestión de categorías y contenido visual" className="flex-1 p-4 sm:p-6">
-          <section aria-labelledby="gestion-categorias-titulo" className="bg-[#f3f2ee] border border-black rounded-sm p-4 sm:p-5 shadow-sm h-full">
+          <section aria-labelledby="gestion-categorias-titulo" className="bg-[#f3f2ee] border border-black rounded-2xl p-4 sm:p-5 shadow-sm h-full max-w-[1500px] mx-auto">
             <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between mb-4">
-              <h2 id="gestion-categorias-titulo" className="text-2xl sm:text-3xl font-black text-black m-0">
+              <h2 id="gestion-categorias-titulo" className="text-2xl sm:text-3xl font-black text-black m-0 border-l-4 border-[#F9B805] pl-3">
                 Gestión de Categorías
               </h2>
 
               <div className="flex flex-col sm:flex-row gap-2">
                 <button
                   type="button"
-                  className="bg-black text-white text-xs sm:text-sm font-bold px-4 py-2 rounded-sm border border-black hover:text-yellow-400 transition-colors"
+                  className="bg-[#F9B805] text-black text-xs sm:text-sm font-bold px-4 py-2 rounded-xl border border-black hover:brightness-95 transition-colors"
                 >
                   + Nueva Categoría
                 </button>
                 <button
                   type="button"
-                  className="bg-white text-black text-xs sm:text-sm font-bold px-4 py-2 rounded-sm border border-black hover:bg-zinc-100 transition-colors"
+                  className="bg-white text-black text-xs sm:text-sm font-bold px-4 py-2 rounded-xl border border-black hover:bg-zinc-100 transition-colors"
                 >
                   + Agregar Productos
                 </button>
@@ -55,7 +55,7 @@ export function GestionCategorias() {
             </div>
 
             <div className="grid grid-cols-1 xl:grid-cols-[1.8fr_0.9fr] gap-5">
-              <div className="overflow-x-auto border border-black bg-white rounded-sm">
+              <div className="overflow-x-auto border border-black bg-white rounded-2xl shadow-sm">
                 <table className="w-full min-w-[520px] border-collapse">
                   <thead>
                     <tr className="bg-zinc-900 text-white text-xs font-bold">
@@ -112,8 +112,8 @@ export function GestionCategorias() {
                 </table>
               </div>
 
-              <aside aria-labelledby="editar-categoria-titulo" className="bg-white border border-black rounded-sm p-4 shadow-sm">
-                <h3 id="editar-categoria-titulo" className="text-lg font-black text-black mb-4">
+              <aside aria-labelledby="editar-categoria-titulo" className="bg-white border border-black rounded-2xl p-4 shadow-sm">
+                <h3 id="editar-categoria-titulo" className="text-lg font-black text-black mb-4 border-b-2 border-[#F9B805] pb-2">
                   Editar categoría
                 </h3>
 
@@ -127,20 +127,20 @@ export function GestionCategorias() {
                       name="nombreCategoria"
                       type="text"
                       placeholder="Ingresar nombre de la categoría"
-                      className="w-full border border-gray-400 bg-white text-sm px-3 py-2 rounded-sm focus:outline-none focus:border-black"
+                      className="w-full border border-gray-400 bg-white text-sm px-3 py-2 rounded-xl focus:outline-none focus:border-black"
                     />
                   </div>
 
-                  <fieldset className="border border-dashed border-gray-400 p-3 rounded-sm">
+                  <fieldset className="border border-dashed border-gray-400 p-3 rounded-xl">
                     <legend className="px-1 text-xs font-bold text-black">Imagen de la categoría</legend>
                     <input type="file" accept="image/*" className="text-xs text-gray-600" />
                   </fieldset>
 
                   <div className="flex flex-col-reverse sm:flex-row sm:justify-end gap-2 pt-2">
-                    <button type="button" className="border border-black text-black px-4 py-2 text-xs font-bold rounded-sm">
+                    <button type="button" className="border border-black text-black px-4 py-2 text-xs font-bold rounded-xl">
                       Cancelar
                     </button>
-                    <button type="submit" className="bg-black text-white px-4 py-2 text-xs font-bold rounded-sm hover:text-yellow-400 transition-colors">
+                    <button type="submit" className="bg-black text-white px-4 py-2 text-xs font-bold rounded-xl hover:text-yellow-400 transition-colors">
                       Guardar cambios
                     </button>
                   </div>

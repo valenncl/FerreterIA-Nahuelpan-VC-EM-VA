@@ -1,4 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom';
+import { AdminSidebar } from './AdminSidebar';
 
 const LogoNahuelpan = ({ className = 'w-8 h-8' }: { className?: string }) => (
   <svg className={className} viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -39,7 +40,8 @@ export function GestionProductos({ onLogout }: GestionProductosProps) {
       </header>
 
       <div className="flex flex-1">
-        <aside className="w-56 bg-black text-white hidden md:flex flex-col border-r border-zinc-800 shrink-0">
+        <AdminSidebar active="productos" onLogout={onLogout} />
+        <div className="hidden">
           <nav className="flex flex-col py-4">
             <Link to="/admin/dashboard" className="flex items-center space-x-3 px-6 py-3 text-sm font-bold border-b border-amber-500/30 hover:bg-zinc-900 text-white transition-colors">
               <span>🏠</span><span>Inicio</span>
@@ -63,17 +65,14 @@ export function GestionProductos({ onLogout }: GestionProductosProps) {
               <span>🚪</span><span>Cerrar sesión</span>
             </button>
           </nav>
-        </aside>
+        </div>
 
         <main aria-label="Gestión de productos" className="flex-1 p-4 sm:p-6">
           <section className="bg-[#f3f2ee] border border-black rounded-sm p-4 sm:p-5 shadow-sm h-full max-w-[1500px] mx-auto">
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-4">
+            <div className="mb-4">
               <h2 className="text-2xl sm:text-3xl font-black text-black m-0 border-l-4 border-[#F9B805] pl-3">
                 Gestión de Productos
               </h2>
-              <button type="button" className="bg-[#F9B805] text-black text-xs sm:text-sm font-bold px-4 py-2 rounded-xl border border-black hover:brightness-95 transition-colors">
-                + Nuevo Producto
-              </button>
             </div>
 
             <div className="mb-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 border-y border-black/15 py-3">
@@ -168,7 +167,7 @@ export function GestionProductos({ onLogout }: GestionProductosProps) {
                 <h3 id="editar-producto-titulo" className="text-lg font-black text-black mb-4 border-b-2 border-[#F9B805] pb-2">
                   Nuevo producto
                 </h3>
-                <form className="space-y-4">
+                <form className="space-y-4" onSubmit={(event) => event.preventDefault()}>
                   <div>
                     <label htmlFor="producto-nombre" className="block text-xs font-bold text-black mb-1">Nombre del producto</label>
                     <input id="producto-nombre" name="nombreProducto" type="text" placeholder="Ingresar nombre del producto" className="w-full border border-gray-400 bg-white text-sm px-3 py-2 rounded-xl focus:outline-none focus:border-black" />

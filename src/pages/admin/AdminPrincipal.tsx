@@ -1,4 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom';
+import { AdminSidebar } from './AdminSidebar';
 
 const LogoNahuelpan = ({ className = "w-8 h-8" }: { className?: string }) => (
   <svg className={className} viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -39,7 +40,8 @@ export function AdminPrincipal({ onLogout }: AdminPrincipalProps) {
       </header>
 
       <div className="flex flex-1">
-        <aside className="w-56 bg-black text-white hidden md:flex flex-col border-r border-zinc-800 shrink-0">
+        <AdminSidebar active="inicio" onLogout={onLogout} />
+        <div className="hidden">
           <nav className="flex flex-col py-4">
             <Link to="/admin/dashboard" className="flex items-center space-x-3 px-6 py-3 text-sm font-bold border-b border-amber-500/30 hover:bg-zinc-900 text-white transition-colors">
               <span>🏠</span>
@@ -66,7 +68,7 @@ export function AdminPrincipal({ onLogout }: AdminPrincipalProps) {
               <span>Cerrar sesión</span>
             </button>
           </nav>
-        </aside>
+        </div>
 
         <main aria-label="Dashboard principal" className="flex-1 p-4 sm:p-6 space-y-6 sm:space-y-8 overflow-x-auto max-w-[1600px]">
           <section aria-labelledby="resumen-titulo">

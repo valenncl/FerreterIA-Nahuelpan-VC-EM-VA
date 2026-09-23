@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { AdminSidebar } from './AdminSidebar';
 
 const LogoNahuelpan = ({ className = 'w-8 h-8' }: { className?: string }) => (
   <svg className={className} viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -53,7 +54,8 @@ export function DisponibilidadHorarios({ onLogout }: DisponibilidadHorariosProps
       </header>
 
       <div className="flex flex-1">
-        <aside className="w-56 bg-black text-white hidden md:flex flex-col border-r border-zinc-800 shrink-0">
+        <AdminSidebar active="disponibilidad" onLogout={onLogout} />
+        <div className="hidden">
           <nav className="flex flex-col py-4">
             <Link to="/admin/dashboard" className="flex items-center space-x-3 px-6 py-3 text-sm font-bold border-b border-amber-500/30 hover:bg-zinc-900 text-white transition-colors">
               <span>🏠</span><span>Inicio</span>
@@ -74,7 +76,7 @@ export function DisponibilidadHorarios({ onLogout }: DisponibilidadHorariosProps
               <span>🚪</span><span>Cerrar sesión</span>
             </button>
           </nav>
-        </aside>
+        </div>
 
         <main aria-label="Disponibilidad y gestión de horarios" className="flex-1 p-4 sm:p-6">
           <h2 className="text-2xl sm:text-3xl font-black text-black mb-4 sm:mb-6 border-l-4 border-[#F9B805] pl-3">
@@ -122,7 +124,7 @@ export function DisponibilidadHorarios({ onLogout }: DisponibilidadHorariosProps
                 <h3 id="cierre-temporal-titulo" className="text-xl font-extrabold text-black mb-4 border-b-2 border-[#F9B805] pb-2">
                   Cierre Temporal
                 </h3>
-                <form className="space-y-4">
+                <form className="space-y-4" onSubmit={(event) => event.preventDefault()}>
                   <label className="flex items-center gap-2 text-sm font-medium text-zinc-800">
                     <input type="checkbox" name="reporte-cierre" className="accent-black" />
                     Reportar cierre temporal del negocio
@@ -152,7 +154,7 @@ export function DisponibilidadHorarios({ onLogout }: DisponibilidadHorariosProps
               <h3 id="horario-atencion-titulo" className="text-xl font-extrabold text-black mb-4 border-b-2 border-[#F9B805] pb-2">
                 Horario de Atención
               </h3>
-              <form className="space-y-4">
+              <form className="space-y-4" onSubmit={(event) => event.preventDefault()}>
                 <div className="overflow-x-auto">
                   <table className="w-full min-w-[420px] border-collapse text-left text-xs sm:text-sm">
                     <thead>

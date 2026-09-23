@@ -1,4 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom';
+import { AdminSidebar } from './AdminSidebar';
 
 const LogoNahuelpan = ({ className = 'w-8 h-8' }: { className?: string }) => (
   <svg className={className} viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -39,7 +40,8 @@ export function GestionCategorias({ onLogout }: GestionCategoriasProps) {
       </header>
 
       <div className="flex flex-1">
-        <aside className="w-56 bg-black text-white hidden md:flex flex-col border-r border-zinc-800 shrink-0">
+        <AdminSidebar active="categorias" onLogout={onLogout} />
+        <div className="hidden">
           <nav className="flex flex-col py-4">
             <Link to="/admin/dashboard" className="flex items-center space-x-3 px-6 py-3 text-sm font-bold border-b border-amber-500/30 hover:bg-zinc-900 text-white transition-colors">
               <span>🏠</span><span>Inicio</span>
@@ -60,7 +62,7 @@ export function GestionCategorias({ onLogout }: GestionCategoriasProps) {
               <span>🚪</span><span>Cerrar sesión</span>
             </button>
           </nav>
-        </aside>
+        </div>
 
         <main aria-label="Gestión de categorías y contenido visual" className="flex-1 p-4 sm:p-6">
           <section aria-labelledby="gestion-categorias-titulo" className="bg-[#f3f2ee] border border-black rounded-2xl p-4 sm:p-5 shadow-sm h-full max-w-[1500px] mx-auto">
@@ -72,9 +74,9 @@ export function GestionCategorias({ onLogout }: GestionCategoriasProps) {
                 <button type="button" className="bg-[#F9B805] text-black text-xs sm:text-sm font-bold px-4 py-2 rounded-xl border border-black hover:brightness-95 transition-colors">
                   + Nueva Categoría
                 </button>
-                <button type="button" className="bg-white text-black text-xs sm:text-sm font-bold px-4 py-2 rounded-xl border border-black hover:bg-zinc-100 transition-colors">
+                <Link to="/admin/productos" className="bg-white text-black text-xs sm:text-sm font-bold px-4 py-2 rounded-xl border border-black hover:bg-zinc-100 transition-colors">
                   + Agregar Productos
-                </button>
+                </Link>
               </div>
             </div>
 
@@ -98,7 +100,7 @@ export function GestionCategorias({ onLogout }: GestionCategoriasProps) {
                         <div className="flex gap-2 flex-wrap">
                           <button type="button" className="text-xs font-bold text-black border border-black px-2 py-1 rounded-sm">Editar</button>
                           <button type="button" className="text-xs font-bold text-red-700 border border-red-700 px-2 py-1 rounded-sm">Eliminar</button>
-                          <button type="button" className="text-xs font-bold text-black border border-black px-2 py-1 rounded-sm">Productos</button>
+                          <Link to="/admin/productos" className="text-xs font-bold text-black border border-black px-2 py-1 rounded-sm">Productos</Link>
                         </div>
                       </td>
                     </tr>
@@ -110,7 +112,7 @@ export function GestionCategorias({ onLogout }: GestionCategoriasProps) {
                         <div className="flex gap-2 flex-wrap">
                           <button type="button" className="text-xs font-bold text-black border border-black px-2 py-1 rounded-sm">Editar</button>
                           <button type="button" className="text-xs font-bold text-red-700 border border-red-700 px-2 py-1 rounded-sm">Eliminar</button>
-                          <button type="button" className="text-xs font-bold text-black border border-black px-2 py-1 rounded-sm">Productos</button>
+                          <Link to="/admin/productos" className="text-xs font-bold text-black border border-black px-2 py-1 rounded-sm">Productos</Link>
                         </div>
                       </td>
                     </tr>
@@ -122,7 +124,7 @@ export function GestionCategorias({ onLogout }: GestionCategoriasProps) {
                         <div className="flex gap-2 flex-wrap">
                           <button type="button" className="text-xs font-bold text-black border border-black px-2 py-1 rounded-sm">Editar</button>
                           <button type="button" className="text-xs font-bold text-red-700 border border-red-700 px-2 py-1 rounded-sm">Eliminar</button>
-                          <button type="button" className="text-xs font-bold text-black border border-black px-2 py-1 rounded-sm">Productos</button>
+                          <Link to="/admin/productos" className="text-xs font-bold text-black border border-black px-2 py-1 rounded-sm">Productos</Link>
                         </div>
                       </td>
                     </tr>
@@ -134,7 +136,7 @@ export function GestionCategorias({ onLogout }: GestionCategoriasProps) {
                 <h3 id="editar-categoria-titulo" className="text-lg font-black text-black mb-4 border-b-2 border-[#F9B805] pb-2">
                   Editar categoría
                 </h3>
-                <form className="space-y-4">
+                <form className="space-y-4" onSubmit={(event) => event.preventDefault()}>
                   <div>
                     <label htmlFor="categoria-nombre" className="block text-xs font-bold text-black mb-1">
                       Nombre de la categoría

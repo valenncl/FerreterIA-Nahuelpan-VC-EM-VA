@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { CategoriaCard } from '../../components/CategoriaCard';
 
 export const Inicio: React.FC = () => {
@@ -36,12 +37,12 @@ export const Inicio: React.FC = () => {
           <h2 className="text-base sm:text-xl font-extrabold text-nahuelpan-red mb-6 tracking-widest uppercase">
             BULONERÍA Y FERRETERÍA
           </h2>
-          <button 
-            type="button" 
+          <Link 
+            to="/categorias"
             className="bg-nahuelpan-red hover:bg-nahuelpan-red/90 text-white font-bold px-8 py-2.5 rounded-full text-xs sm:text-sm tracking-wider uppercase transition-all shadow-md"
           >
             VER CATÁLOGO
-          </button>
+          </Link>
         </div>
       </section>
 
@@ -56,18 +57,20 @@ export const Inicio: React.FC = () => {
             Especialistas en bulonería y fijaciones de alta resistencia en Trelew. Contamos con el stock esencial de bulones, tuercas, arandelas, roscas y herramientas indispensables para que encuentres exactamente lo que tu proyecto o taller necesita, sin vueltas. Además, compartimos tips de construcción y decoración para ayudarte a llevar a cabo tus ideas de la mejor manera.
           </p>
           <div className="flex flex-wrap gap-4 mt-2">
-            <button 
-              type="button" 
+            <Link 
+              to="/categorias"
               className="bg-nahuelpan-red hover:bg-nahuelpan-red/90 text-white font-bold px-6 py-2.5 rounded text-sm transition-all"
             >
               Ver Categorías
-            </button>
-            <button 
-              type="button" 
+            </Link>
+            <a 
+              href="https://wa.me/5492804240468"
+              target="_blank"
+              rel="noopener noreferrer"
               className="bg-nahuelpan-gold hover:bg-nahuelpan-gold/90 text-nahuelpan-black font-bold px-6 py-2.5 rounded text-sm transition-all"
             >
               Contactanos
-            </button>
+            </a>
           </div>
         </div>
 
@@ -163,12 +166,14 @@ export const Inicio: React.FC = () => {
 
       {/* Botón Flotante de WhatsApp */}
       <div className="fixed bottom-6 right-6 z-50">
-        <button 
-          type="button" 
+        <a 
+          href="https://wa.me/5492804240468"
+          target="_blank"
+          rel="noopener noreferrer"
           className="bg-whatsapp hover:brightness-105 text-white font-bold px-5 py-3 rounded-full text-sm shadow-xl flex items-center gap-2 transition-transform hover:scale-105"
         >
           <span className="text-lg">💬</span> Contactarse
-        </button>
+        </a>
       </div>
     </div>
   );

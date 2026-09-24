@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 export const DetalleCategoria: React.FC = () => {
   const productoNombre = 'Taladro';
-  const telefonoWhatsApp = '5492800000000'; // Reemplazar por el número real de la ferretería
+  const telefonoWhatsApp = '5492804240468'; // Reemplazar por el número real de la ferretería
   
   // Mensaje personalizado dinámico para WhatsApp
   const mensajeWhatsApp = encodeURIComponent(

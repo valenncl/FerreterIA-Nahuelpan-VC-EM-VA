@@ -124,7 +124,7 @@ export const Categorias = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {categorias.map((cat) => (
           <Link
-            to={`/categorias/${cat.id}`}
+            to={`/categorias/${cat.id}/productos`}
             key={cat.id}
             className="border-2 border-gray-400 bg-white overflow-hidden shadow-sm hover:shadow-md transition-shadow"
           >

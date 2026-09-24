@@ -8,7 +8,7 @@ interface CategoriaCardProps {
 
 export const CategoriaCard = ({ id, nombre, imagenUrl }: CategoriaCardProps) => {
   return (
-    <Link to={`/categorias/${id}`} className="border border-gray-300 bg-white overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+    <Link to={`/categorias/${id}/productos`} className="border border-gray-300 bg-white overflow-hidden shadow-sm hover:shadow-md transition-shadow">
       <div className="w-full h-36 sm:h-40 overflow-hidden">
         <img 
           src={imagenUrl} 

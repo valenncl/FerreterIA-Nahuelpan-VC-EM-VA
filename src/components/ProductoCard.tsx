@@ -1,20 +1,24 @@
-import React from 'react';
+import { Link, useParams } from 'react-router-dom';
 
 interface ProductoCardProps {
+  id: string;
   nombre: string;
   precio?: string;
   disponible: boolean;
   imagenUrl: string;
 }
 
-export const ProductoCard: React.FC<ProductoCardProps> = ({
+export const ProductoCard = ({
+  id,
   nombre,
   precio,
   disponible,
   imagenUrl,
-}) => {
+}: ProductoCardProps) => {
+  const { id: categoriaId } = useParams<{ id: string }>();
+
   return (
-    <div className="border-2 border-gray-400 bg-white overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+    <Link to={`/categorias/${categoriaId}/productos/${id}`} className="border-2 border-gray-400 bg-white overflow-hidden shadow-sm hover:shadow-md transition-shadow">
       <div className="w-full h-36 overflow-hidden">
         <img
           src={imagenUrl}
@@ -41,6 +45,6 @@ export const ProductoCard: React.FC<ProductoCardProps> = ({
           </span>
         )}
       </div>
-    </div>
+    </Link>
   );
 };

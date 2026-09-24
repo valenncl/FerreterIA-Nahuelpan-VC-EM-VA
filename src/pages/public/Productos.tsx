@@ -1,4 +1,3 @@
-import React from 'react';
 import { ProductoCard } from '../../components/ProductoCard';
 
 interface ProductoItem {
@@ -9,7 +8,7 @@ interface ProductoItem {
   imagenUrl: string;
 }
 
-export const Productos: React.FC = () => {
+export const Productos = () => {
   const productos: ProductoItem[] = [
     {
       id: '1',
@@ -123,6 +122,7 @@ export const Productos: React.FC = () => {
         {productos.map((prod) => (
           <ProductoCard
             key={prod.id}
+            id={prod.id}
             nombre={prod.nombre}
             precio={prod.precio}
             disponible={prod.disponible}

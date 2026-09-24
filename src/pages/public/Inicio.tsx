@@ -164,17 +164,6 @@ export const Inicio: React.FC = () => {
         </div>
       </section>
 
-      {/* Botón Flotante de WhatsApp */}
-      <div className="fixed bottom-6 right-6 z-50">
-        <a 
-          href="https://wa.me/5492804240468"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="bg-whatsapp hover:brightness-105 text-white font-bold px-5 py-3 rounded-full text-sm shadow-xl flex items-center gap-2 transition-transform hover:scale-105"
-        >
-          <span className="text-lg">💬</span> Contactarse
-        </a>
-      </div>
     </div>
   );
 };

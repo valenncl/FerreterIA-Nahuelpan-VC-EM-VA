@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 interface CategoriaItem {
@@ -8,6 +9,9 @@ interface CategoriaItem {
 }
 
 export const Categorias = () => {
+  const [busqueda, setBusqueda] = useState('');
+  const [filtro, setFiltro] = useState('todas');
+
   const categorias: CategoriaItem[] = [
     {
       id: '1',
@@ -71,6 +75,18 @@ export const Categorias = () => {
     },
   ];
 
+  const categoriasFiltradas = categorias.filter((categoria) => {
+    const coincideBusqueda = categoria.nombre
+      .toLowerCase()
+      .includes(busqueda.toLowerCase());
+    const coincideFiltro =
+      filtro === 'todas' ||
+      (filtro === 'disponible' && categoria.disponible) ||
+      (filtro === 'no-disponible' && !categoria.disponible);
+
+    return coincideBusqueda && coincideFiltro;
+  });
+
   return (
     <div className="w-full max-w-6xl mx-auto px-4 py-6 text-nahuelpan-black font-sans">
       {/* Encabezado y Buscador */}
@@ -89,6 +105,8 @@ export const Categorias = () => {
           <input
             type="text"
             placeholder="Buscar categoría..."
+            value={busqueda}
+            onChange={(e) => setBusqueda(e.target.value)}
             className="w-full pl-9 pr-4 py-1.5 text-xs border border-gray-600 rounded-full focus:outline-none focus:border-nahuelpan-black"
           />
           <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 text-xs">
@@ -102,19 +120,22 @@ export const Categorias = () => {
         <span className="text-nahuelpan-black font-bold mr-1">Filtrar por:</span>
         <button
           type="button"
-          className="bg-nahuelpan-gold text-nahuelpan-black px-4 py-1 rounded-full font-bold shadow-sm"
+          onClick={() => setFiltro('todas')}
+          className={`${filtro === 'todas' ? 'bg-nahuelpan-gold text-nahuelpan-black' : 'bg-nahuelpan-red text-white'} px-4 py-1 rounded-full font-bold shadow-sm`}
         >
           Todas
         </button>
         <button
           type="button"
-          className="bg-nahuelpan-red text-white px-4 py-1 rounded-full font-bold shadow-sm"
+          onClick={() => setFiltro('disponible')}
+          className={`${filtro === 'disponible' ? 'bg-nahuelpan-gold text-nahuelpan-black' : 'bg-nahuelpan-red text-white'} px-4 py-1 rounded-full font-bold shadow-sm`}
         >
           Disponible
         </button>
         <button
           type="button"
-          className="bg-nahuelpan-red text-white px-4 py-1 rounded-full font-bold shadow-sm"
+          onClick={() => setFiltro('no-disponible')}
+          className={`${filtro === 'no-disponible' ? 'bg-nahuelpan-gold text-nahuelpan-black' : 'bg-nahuelpan-red text-white'} px-4 py-1 rounded-full font-bold shadow-sm`}
         >
           No disponible
         </button>
@@ -122,35 +143,41 @@ export const Categorias = () => {
 
       {/* Grilla de Categorías */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        {categorias.map((cat) => (
-          <Link
-            to={`/categorias/${cat.id}/productos`}
-            key={cat.id}
-            className="border-2 border-gray-400 bg-white overflow-hidden shadow-sm hover:shadow-md transition-shadow"
-          >
-            <div className="w-full h-36 overflow-hidden">
-              <img
-                src={cat.imagenUrl}
-                alt={cat.nombre}
-                className="w-full h-full object-cover"
-              />
-            </div>
-            <div className="p-3 bg-white flex flex-col gap-2 items-start">
-              <span className="font-bold text-nahuelpan-black text-sm block">
-                {cat.nombre}
-              </span>
-              {cat.disponible ? (
-                <span className="border border-green-500 text-green-500 text-[11px] px-2 py-0.5 rounded-sm font-medium">
-                  Disponible
+        {categoriasFiltradas.length > 0 ? (
+          categoriasFiltradas.map((cat) => (
+            <Link
+              to={`/categorias/${cat.id}/productos`}
+              key={cat.id}
+              className="border-2 border-gray-400 bg-white overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+            >
+              <div className="w-full h-36 overflow-hidden">
+                <img
+                  src={cat.imagenUrl}
+                  alt={cat.nombre}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="p-3 bg-white flex flex-col gap-2 items-start">
+                <span className="font-bold text-nahuelpan-black text-sm block">
+                  {cat.nombre}
                 </span>
-              ) : (
-                <span className="border border-red-600 text-red-600 text-[11px] px-2 py-0.5 rounded-sm font-medium">
-                  No disponible
-                </span>
-              )}
-            </div>
-          </Link>
-        ))}
+                {cat.disponible ? (
+                  <span className="border border-green-500 text-green-500 text-[11px] px-2 py-0.5 rounded-sm font-medium">
+                    Disponible
+                  </span>
+                ) : (
+                  <span className="border border-red-600 text-red-600 text-[11px] px-2 py-0.5 rounded-sm font-medium">
+                    No disponible
+                  </span>
+                )}
+              </div>
+            </Link>
+          ))
+        ) : (
+          <p className="col-span-full text-center text-nahuelpan-gray">
+            No se encontraron categorías con ese criterio.
+          </p>
+        )}
       </div>
 
       {/* Botón Flotante de WhatsApp */}

@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { ProductoCard } from '../../components/ProductoCard';
 
 interface ProductoItem {
@@ -9,6 +10,9 @@ interface ProductoItem {
 }
 
 export const Productos = () => {
+  const [busqueda, setBusqueda] = useState('');
+  const [filtro, setFiltro] = useState('todos');
+
   const productos: ProductoItem[] = [
     {
       id: '1',
@@ -68,6 +72,18 @@ export const Productos = () => {
     },
   ];
 
+  const productosFiltrados = productos.filter((producto) => {
+    const coincideBusqueda = producto.nombre
+      .toLowerCase()
+      .includes(busqueda.toLowerCase());
+    const coincideFiltro =
+      filtro === 'todos' ||
+      (filtro === 'disponible' && producto.disponible) ||
+      (filtro === 'no-disponible' && !producto.disponible);
+
+    return coincideBusqueda && coincideFiltro;
+  });
+
   return (
     <div className="w-full max-w-6xl mx-auto px-4 py-6 text-nahuelpan-black font-sans">
       {/* Encabezado y Buscador */}
@@ -86,6 +102,8 @@ export const Productos = () => {
           <input
             type="text"
             placeholder="Buscar producto..."
+            value={busqueda}
+            onChange={(e) => setBusqueda(e.target.value)}
             className="w-full pl-9 pr-4 py-1.5 text-xs border border-gray-600 rounded-full focus:outline-none focus:border-nahuelpan-black"
           />
           <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 text-xs">
@@ -99,19 +117,22 @@ export const Productos = () => {
         <span className="text-nahuelpan-black font-bold mr-1">Filtrar por:</span>
         <button
           type="button"
-          className="bg-nahuelpan-gold text-nahuelpan-black px-4 py-1 rounded-full font-bold shadow-sm"
+          onClick={() => setFiltro('todos')}
+          className={`${filtro === 'todos' ? 'bg-nahuelpan-gold text-nahuelpan-black' : 'bg-nahuelpan-red text-white'} px-4 py-1 rounded-full font-bold shadow-sm`}
         >
           Todos
         </button>
         <button
           type="button"
-          className="bg-nahuelpan-red text-white px-4 py-1 rounded-full font-bold shadow-sm"
+          onClick={() => setFiltro('disponible')}
+          className={`${filtro === 'disponible' ? 'bg-nahuelpan-gold text-nahuelpan-black' : 'bg-nahuelpan-red text-white'} px-4 py-1 rounded-full font-bold shadow-sm`}
         >
           Disponible
         </button>
         <button
           type="button"
-          className="bg-nahuelpan-red text-white px-4 py-1 rounded-full font-bold shadow-sm"
+          onClick={() => setFiltro('no-disponible')}
+          className={`${filtro === 'no-disponible' ? 'bg-nahuelpan-gold text-nahuelpan-black' : 'bg-nahuelpan-red text-white'} px-4 py-1 rounded-full font-bold shadow-sm`}
         >
           No disponible
         </button>
@@ -119,16 +140,22 @@ export const Productos = () => {
 
       {/* Grilla de Productos usando el componente ProductoCard */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        {productos.map((prod) => (
-          <ProductoCard
-            key={prod.id}
-            id={prod.id}
-            nombre={prod.nombre}
-            precio={prod.precio}
-            disponible={prod.disponible}
-            imagenUrl={prod.imagenUrl}
-          />
-        ))}
+        {productosFiltrados.length > 0 ? (
+          productosFiltrados.map((prod) => (
+            <ProductoCard
+              key={prod.id}
+              id={prod.id}
+              nombre={prod.nombre}
+              precio={prod.precio}
+              disponible={prod.disponible}
+              imagenUrl={prod.imagenUrl}
+            />
+          ))
+        ) : (
+          <p className="col-span-full text-center text-nahuelpan-gray">
+            No se encontraron productos con ese criterio.
+          </p>
+        )}
       </div>
 
       {/* Botón Flotante de WhatsApp */}

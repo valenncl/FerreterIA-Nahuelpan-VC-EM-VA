@@ -1,75 +1,95 @@
-# React + TypeScript + Vite
+# Ferretería Joana
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Sitio web desarrollado para **Ferretería Joana** como parte del Proyecto Integrador.
 
-Currently, two official plugins are available:
+La aplicación busca brindar una presencia digital al negocio y facilitar a los clientes la consulta de productos, categorías e información de contacto.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Tecnologías
 
-## React Compiler
+* **React** — desarrollo de la interfaz.
+* **TypeScript** — tipado y organización del código.
+* **Vite** — entorno de desarrollo y construcción.
+* **Tailwind CSS** — estilos y diseño responsive, incorporado mediante CDN.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Requisitos
 
-## Expanding the ESLint configuration
+Antes de comenzar, es necesario contar con:
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+* Node.js 18 o superior.
+* npm, incluido con Node.js.
+* Git.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Instalación
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+Clonar el repositorio:
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```bash
+git clone https://github.com/valenncl/FerreterIA-Nahuelpan-VC-EM-VA.git
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Ingresar al directorio del proyecto:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```bash
+cd FerreterIA-Nahuelpan-VC-EM-VA
 ```
+
+Instalar las dependencias:
+
+```bash
+npm install
+```
+
+## Ejecución
+
+Iniciar el servidor de desarrollo:
+
+```bash
+npm run dev
+```
+
+La aplicación estará disponible en la dirección indicada por Vite, generalmente:
+
+http://localhost:5173
+
+Para generar una versión de producción:
+
+```bash
+npm run build
+```
+
+## Funcionalidades
+
+* Página de inicio con presentación del negocio y acceso a las principales secciones.
+* Categorías para organizar y navegar los productos disponibles.
+* Catálogo de productos.
+* Vista de detalle de cada producto.
+* Acceso directo a WhatsApp para realizar consultas sobre productos.
+* Información institucional de la ferretería.
+* Información de contacto y ubicación.
+* Diseño responsive para dispositivos móviles, tablets y computadoras.
+
+## Estructura del proyecto
+
+```text
+src/
+├── assets/
+├── components/
+├── pages/
+│   └── public/
+├── App.tsx
+└── main.tsx
+```
+
+## Equipo
+
+Proyecto desarrollado por:
+
+* Ezequiel Martinez
+* Valentino Cimarrosto
+* Valentino Avila
+
+## Estado del proyecto
+
+**En desarrollo.**
+
+Proyecto realizado en el marco del **Proyecto Integrador** de la materia **Prácticas Profesionalizantes de Desarrollo**, año **2026**.

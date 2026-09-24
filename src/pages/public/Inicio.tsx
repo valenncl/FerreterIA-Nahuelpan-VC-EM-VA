@@ -156,7 +156,7 @@ export const Inicio: React.FC = () => {
 
           <div className="w-full h-44 sm:h-52 overflow-hidden border border-gray-300 shadow-sm">
             <img
-              src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=600&q=80"
+              src="src\assets\images\frente-local.webp"
               alt="Frente del local comercial Nahuelpan"
               className="w-full h-full object-cover"
             />

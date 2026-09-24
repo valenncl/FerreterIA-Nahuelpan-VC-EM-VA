@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AdminSidebar } from './AdminSidebar';
 
@@ -15,10 +16,36 @@ interface GestionProductosProps {
 
 export function GestionProductos({ onLogout }: GestionProductosProps) {
   const navigate = useNavigate();
+  const [productosOcultos, setProductosOcultos] = useState<string[]>([]);
+  const [mensaje, setMensaje] = useState('');
+  const [error, setError] = useState('');
 
   const handleLogout = () => {
     onLogout();
     navigate('/admin');
+  };
+
+  const guardarProducto = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const datos = new FormData(event.currentTarget);
+    const nombre = String(datos.get('nombreProducto') || '').trim();
+    const descripcion = String(datos.get('descripcionProducto') || '').trim();
+    const imagen = datos.get('imagenPrincipal') as File | null;
+
+    if (!nombre || !descripcion || !imagen || imagen.size === 0) {
+      setError('Completá nombre, descripción e imagen principal.');
+      setMensaje('');
+      return;
+    }
+    setError('');
+    setMensaje(`Producto "${nombre}" guardado correctamente.`);
+    event.currentTarget.reset();
+  };
+
+  const eliminarProducto = (nombre: string) => {
+    setProductosOcultos((actuales) => [...actuales, nombre]);
+    setMensaje(`Producto "${nombre}" eliminado.`);
+    setError('');
   };
 
   return (
@@ -101,36 +128,36 @@ export function GestionProductos({ onLogout }: GestionProductosProps) {
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-zinc-200 text-xs sm:text-sm text-zinc-800">
-                    <tr>
+                    <tr hidden={productosOcultos.includes('Taladro Percutor')}>
                       <td className="p-3"><strong className="block text-black">Taladro Percutor</strong><span className="text-xs text-zinc-500">Taladro profesional para madera y metal</span></td>
                       <td className="p-3">Herramientas</td>
                       <td className="p-3"><span className="inline-flex items-center gap-1.5 text-green-600 font-bold"><span className="w-2 h-2 rounded-full bg-green-600" />Activo</span></td>
                       <td className="p-3 text-right">
                         <div className="flex justify-end gap-2">
-                          <button type="button" className="text-xs font-bold text-black border border-black px-3 py-1.5 rounded-xl hover:bg-zinc-100">Editar</button>
-                          <button type="button" className="text-xs font-bold text-red-700 border border-red-700 px-3 py-1.5 rounded-xl hover:bg-red-50">Eliminar</button>
+                          <button type="button" onClick={() => { setMensaje('Taladro Percutor cargado para editar.'); setError(''); }} className="text-xs font-bold text-black border border-black px-3 py-1.5 rounded-xl hover:bg-zinc-100">Editar</button>
+                          <button type="button" onClick={() => eliminarProducto('Taladro Percutor')} className="text-xs font-bold text-red-700 border border-red-700 px-3 py-1.5 rounded-xl hover:bg-red-50">Eliminar</button>
                         </div>
                       </td>
                     </tr>
-                    <tr>
+                    <tr hidden={productosOcultos.includes('Pintura Interior')}>
                       <td className="p-3"><strong className="block text-black">Pintura Interior</strong><span className="text-xs text-zinc-500">Pintura lavable para interiores de alta cobertura</span></td>
                       <td className="p-3">Pinturas</td>
                       <td className="p-3"><span className="inline-flex items-center gap-1.5 text-green-600 font-bold"><span className="w-2 h-2 rounded-full bg-green-600" />Activo</span></td>
                       <td className="p-3 text-right">
                         <div className="flex justify-end gap-2">
-                          <button type="button" className="text-xs font-bold text-black border border-black px-3 py-1.5 rounded-xl hover:bg-zinc-100">Editar</button>
-                          <button type="button" className="text-xs font-bold text-red-700 border border-red-700 px-3 py-1.5 rounded-xl hover:bg-red-50">Eliminar</button>
+                          <button type="button" onClick={() => { setMensaje('Pintura Interior cargada para editar.'); setError(''); }} className="text-xs font-bold text-black border border-black px-3 py-1.5 rounded-xl hover:bg-zinc-100">Editar</button>
+                          <button type="button" onClick={() => eliminarProducto('Pintura Interior')} className="text-xs font-bold text-red-700 border border-red-700 px-3 py-1.5 rounded-xl hover:bg-red-50">Eliminar</button>
                         </div>
                       </td>
                     </tr>
-                    <tr>
+                    <tr hidden={productosOcultos.includes('Llave inglesa')}>
                       <td className="p-3"><strong className="block text-black">Llave inglesa</strong><span className="text-xs text-zinc-500">Llave de acero forjado para trabajo pesado</span></td>
                       <td className="p-3">Herramientas</td>
                       <td className="p-3"><span className="inline-flex items-center gap-1.5 text-red-600 font-bold"><span className="w-2 h-2 rounded-full bg-red-600" />Inactivo</span></td>
                       <td className="p-3 text-right">
                         <div className="flex justify-end gap-2">
-                          <button type="button" className="text-xs font-bold text-black border border-black px-3 py-1.5 rounded-xl hover:bg-zinc-100">Editar</button>
-                          <button type="button" className="text-xs font-bold text-red-700 border border-red-700 px-3 py-1.5 rounded-xl hover:bg-red-50">Eliminar</button>
+                          <button type="button" onClick={() => { setMensaje('Llave inglesa cargada para editar.'); setError(''); }} className="text-xs font-bold text-black border border-black px-3 py-1.5 rounded-xl hover:bg-zinc-100">Editar</button>
+                          <button type="button" onClick={() => eliminarProducto('Llave inglesa')} className="text-xs font-bold text-red-700 border border-red-700 px-3 py-1.5 rounded-xl hover:bg-red-50">Eliminar</button>
                         </div>
                       </td>
                     </tr>
@@ -144,7 +171,7 @@ export function GestionProductos({ onLogout }: GestionProductosProps) {
                   ['Pintura Interior', 'Pinturas', 'Pintura lavable para interiores de alta cobertura', 'Activo'],
                   ['Llave inglesa', 'Herramientas', 'Llave de acero forjado para trabajo pesado', 'Inactivo'],
                 ].map(([nombre, categoria, descripcion, estado]) => (
-                  <article key={nombre} className="bg-white border border-black rounded-2xl p-4 shadow-sm">
+                  <article key={nombre} hidden={productosOcultos.includes(nombre)} className="bg-white border border-black rounded-2xl p-4 shadow-sm">
                     <div className="flex items-start justify-between gap-3">
                       <div className="min-w-0">
                         <h3 className="font-black text-black truncate">{nombre}</h3>
@@ -155,8 +182,8 @@ export function GestionProductos({ onLogout }: GestionProductosProps) {
                     <div className="mt-4 flex items-center justify-between gap-3 border-t border-zinc-200 pt-3">
                       <span className="text-xs font-bold text-zinc-600">{categoria}</span>
                       <div className="flex gap-2">
-                        <button type="button" className="text-xs font-bold text-black border border-black px-3 py-1.5 rounded-xl">Editar</button>
-                        <button type="button" className="text-xs font-bold text-red-700 border border-red-700 px-3 py-1.5 rounded-xl">Eliminar</button>
+                        <button type="button" onClick={() => { setMensaje(`${nombre} cargado para editar.`); setError(''); }} className="text-xs font-bold text-black border border-black px-3 py-1.5 rounded-xl">Editar</button>
+                        <button type="button" onClick={() => eliminarProducto(nombre)} className="text-xs font-bold text-red-700 border border-red-700 px-3 py-1.5 rounded-xl">Eliminar</button>
                       </div>
                     </div>
                   </article>
@@ -167,7 +194,7 @@ export function GestionProductos({ onLogout }: GestionProductosProps) {
                 <h3 id="editar-producto-titulo" className="text-lg font-black text-black mb-4 border-b-2 border-[#F9B805] pb-2">
                   Nuevo producto
                 </h3>
-                <form className="space-y-4" onSubmit={(event) => event.preventDefault()}>
+                <form className="space-y-4" onSubmit={guardarProducto}>
                   <div>
                     <label htmlFor="producto-nombre" className="block text-xs font-bold text-black mb-1">Nombre del producto</label>
                     <input id="producto-nombre" name="nombreProducto" type="text" placeholder="Ingresar nombre del producto" className="w-full border border-gray-400 bg-white text-sm px-3 py-2 rounded-xl focus:outline-none focus:border-black" />
@@ -187,7 +214,7 @@ export function GestionProductos({ onLogout }: GestionProductosProps) {
                   </div>
                   <fieldset className="border border-dashed border-gray-400 p-3 rounded-xl">
                     <legend className="px-1 text-xs font-bold text-black">Imagen principal</legend>
-                    <input type="file" accept="image/*" className="text-xs text-gray-600" />
+                    <input name="imagenPrincipal" type="file" accept="image/*" className="text-xs text-gray-600" />
                   </fieldset>
                   <fieldset className="border border-dashed border-gray-400 p-3 rounded-xl">
                     <legend className="px-1 text-xs font-bold text-black">Galería</legend>
@@ -200,8 +227,9 @@ export function GestionProductos({ onLogout }: GestionProductosProps) {
                       <option>Inactivo</option>
                     </select>
                   </div>
+                  {(error || mensaje) && <p role="status" className={`text-xs font-bold ${error ? 'text-red-600' : 'text-green-700'}`}>{error || mensaje}</p>}
                   <div className="flex flex-col-reverse sm:flex-row sm:justify-end gap-2 pt-2">
-                    <button type="button" className="border border-black text-black px-4 py-2 text-xs font-bold rounded-xl">Cancelar</button>
+                    <button type="button" onClick={() => { setMensaje('Carga cancelada.'); setError(''); }} className="border border-black text-black px-4 py-2 text-xs font-bold rounded-xl">Cancelar</button>
                     <button type="submit" className="bg-[#F9B805] text-black px-4 py-2 text-xs font-bold rounded-xl hover:brightness-95 transition-colors">Guardar producto</button>
                   </div>
                 </form>

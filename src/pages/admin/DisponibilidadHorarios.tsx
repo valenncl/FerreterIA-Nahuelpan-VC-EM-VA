@@ -27,12 +27,50 @@ export function DisponibilidadHorarios({ onLogout }: DisponibilidadHorariosProps
     Pinturas: true,
     Plomería: false,
   });
+  const [mensaje, setMensaje] = useState('');
+  const [error, setError] = useState('');
 
   const alternarCategoria = (categoria: string) => {
     setCategoriasActivas((estadoActual) => ({
       ...estadoActual,
       [categoria]: !estadoActual[categoria],
     }));
+    setMensaje(`Estado de ${categoria} actualizado.`);
+    setError('');
+  };
+
+  const guardarHorarios = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const datos = new FormData(event.currentTarget);
+    const aperturas = datos.getAll('apertura').map(String);
+    const cierres = datos.getAll('cierre').map(String);
+    if (aperturas.some((hora, indice) => hora >= cierres[indice])) {
+      setError('La hora de apertura debe ser anterior a la hora de cierre.');
+      setMensaje('');
+      return;
+    }
+    setError('');
+    setMensaje('Horarios guardados correctamente.');
+  };
+
+  const guardarCierre = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const datos = new FormData(event.currentTarget);
+    const motivo = String(datos.get('motivoCierre') || '').trim();
+    const inicio = String(datos.get('fechaInicio') || '');
+    const reapertura = String(datos.get('fechaReapertura') || '');
+    if (!motivo || !inicio || !reapertura) {
+      setError('Completá motivo, fecha de inicio y fecha de reapertura.');
+      setMensaje('');
+      return;
+    }
+    if (inicio > reapertura) {
+      setError('La fecha de inicio no puede ser posterior a la reapertura.');
+      setMensaje('');
+      return;
+    }
+    setError('');
+    setMensaje('Cierre temporal programado correctamente.');
   };
 
   return (
@@ -82,6 +120,7 @@ export function DisponibilidadHorarios({ onLogout }: DisponibilidadHorariosProps
           <h2 className="text-2xl sm:text-3xl font-black text-black mb-4 sm:mb-6 border-l-4 border-[#F9B805] pl-3">
             Disponibilidad y Gestión de Horarios
           </h2>
+          {(error || mensaje) && <p role="status" className={`mb-4 text-sm font-bold ${error ? 'text-red-600' : 'text-green-700'}`}>{error || mensaje}</p>}
 
           <div className="grid grid-cols-1 xl:grid-cols-[1.55fr_1fr] gap-4 items-start">
             <div className="space-y-4">
@@ -124,7 +163,7 @@ export function DisponibilidadHorarios({ onLogout }: DisponibilidadHorariosProps
                 <h3 id="cierre-temporal-titulo" className="text-xl font-extrabold text-black mb-4 border-b-2 border-[#F9B805] pb-2">
                   Cierre Temporal
                 </h3>
-                <form className="space-y-4" onSubmit={(event) => event.preventDefault()}>
+                <form className="space-y-4" onSubmit={guardarCierre}>
                   <label className="flex items-center gap-2 text-sm font-medium text-zinc-800">
                     <input type="checkbox" name="reporte-cierre" className="accent-black" />
                     Reportar cierre temporal del negocio
@@ -154,7 +193,7 @@ export function DisponibilidadHorarios({ onLogout }: DisponibilidadHorariosProps
               <h3 id="horario-atencion-titulo" className="text-xl font-extrabold text-black mb-4 border-b-2 border-[#F9B805] pb-2">
                 Horario de Atención
               </h3>
-              <form className="space-y-4" onSubmit={(event) => event.preventDefault()}>
+              <form className="space-y-4" onSubmit={guardarHorarios}>
                 <div className="overflow-x-auto">
                   <table className="w-full min-w-[420px] border-collapse text-left text-xs sm:text-sm">
                     <thead>
@@ -177,8 +216,8 @@ export function DisponibilidadHorarios({ onLogout }: DisponibilidadHorariosProps
                       ].map(([dia, apertura, cierre]) => (
                         <tr key={dia}>
                           <th scope="row" className="p-2 font-bold text-left">{dia}</th>
-                          <td className="p-2"><input type="time" defaultValue={apertura} className="w-full border border-gray-400 rounded-xl px-2 py-1 bg-white" /></td>
-                          <td className="p-2"><input type="time" defaultValue={cierre} className="w-full border border-gray-400 rounded-xl px-2 py-1 bg-white" /></td>
+                          <td className="p-2"><input name="apertura" type="time" defaultValue={apertura} className="w-full border border-gray-400 rounded-xl px-2 py-1 bg-white" /></td>
+                          <td className="p-2"><input name="cierre" type="time" defaultValue={cierre} className="w-full border border-gray-400 rounded-xl px-2 py-1 bg-white" /></td>
                           <td className="p-2"><input type="checkbox" className="accent-gray-600" /></td>
                         </tr>
                       ))}

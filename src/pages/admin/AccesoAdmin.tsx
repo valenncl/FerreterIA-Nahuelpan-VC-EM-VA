@@ -10,16 +10,19 @@ export function AccesoAdmin({ onLogin }: AccesoAdminProps) {
   const [usuario, setUsuario] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(false);
+  const [mensaje, setMensaje] = useState('');
 
   const manejarSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (usuario === 'admin' && password === 'admin123') {
       setError(false);
+      setMensaje('');
       onLogin();
       navigate('/admin/dashboard');
       return;
     }
     setError(true);
+    setMensaje('');
   };
 
   return (
@@ -98,9 +101,9 @@ export function AccesoAdmin({ onLogin }: AccesoAdminProps) {
                 />
                 <span>Recordarme</span>
               </label>
-              <a href="#" className="hover:underline text-gray-300">
+              <button type="button" onClick={() => { setMensaje('Contactá al administrador del sistema para recuperar tu contraseña.'); setError(false); }} className="hover:underline text-gray-300">
                 ¿Olvidaste tu contraseña?
-              </a>
+              </button>
             </div>
 
             <button 
@@ -123,6 +126,7 @@ export function AccesoAdmin({ onLogin }: AccesoAdminProps) {
               <p>[mensaje de error: credenciales incorrectas]</p>
             </div>
           )}
+          {mensaje && <p role="status" className="w-full text-center text-xs font-semibold text-[#F9B805]">{mensaje}</p>}
 
           <p className="text-xs text-gray-300 flex items-center justify-center space-x-1 pt-2">
             <span className="text-yellow-500">🔒</span>

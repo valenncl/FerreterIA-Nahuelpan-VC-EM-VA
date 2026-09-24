@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AdminSidebar } from './AdminSidebar';
 
@@ -15,10 +16,33 @@ interface GestionCategoriasProps {
 
 export function GestionCategorias({ onLogout }: GestionCategoriasProps) {
   const navigate = useNavigate();
+  const [nombreCategoria, setNombreCategoria] = useState('');
+  const [categoriasOcultas, setCategoriasOcultas] = useState<string[]>([]);
+  const [mensaje, setMensaje] = useState('');
+  const [error, setError] = useState('');
 
   const handleLogout = () => {
     onLogout();
     navigate('/admin');
+  };
+
+  const guardarCategoria = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const nombre = nombreCategoria.trim();
+    if (!nombre) {
+      setError('Ingresá un nombre para la categoría.');
+      setMensaje('');
+      return;
+    }
+    setError('');
+    setMensaje(`Categoría "${nombre}" guardada correctamente.`);
+    setNombreCategoria('');
+  };
+
+  const eliminarCategoria = (nombre: string) => {
+    setCategoriasOcultas((actuales) => [...actuales, nombre]);
+    setMensaje(`Categoría "${nombre}" eliminada.`);
+    setError('');
   };
 
   return (
@@ -71,7 +95,7 @@ export function GestionCategorias({ onLogout }: GestionCategoriasProps) {
                 Gestión de Categorías
               </h2>
               <div className="flex flex-col sm:flex-row gap-2">
-                <button type="button" className="bg-[#F9B805] text-black text-xs sm:text-sm font-bold px-4 py-2 rounded-xl border border-black hover:brightness-95 transition-colors">
+                <button type="button" onClick={() => { setNombreCategoria(''); setError(''); setMensaje('Formulario listo para una nueva categoría.'); }} className="bg-[#F9B805] text-black text-xs sm:text-sm font-bold px-4 py-2 rounded-xl border border-black hover:brightness-95 transition-colors">
                   + Nueva Categoría
                 </button>
                 <Link to="/admin/productos" className="bg-white text-black text-xs sm:text-sm font-bold px-4 py-2 rounded-xl border border-black hover:bg-zinc-100 transition-colors">
@@ -92,42 +116,42 @@ export function GestionCategorias({ onLogout }: GestionCategoriasProps) {
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-zinc-200 text-xs sm:text-sm text-zinc-800">
-                    <tr>
+                    {!categoriasOcultas.includes('Herramientas') && <tr>
                       <td className="p-3">Herramientas</td>
                       <td className="p-3">img</td>
                       <td className="p-3"><span className="inline-block text-green-600 font-bold">Activa</span></td>
                       <td className="p-3">
                         <div className="flex gap-2 flex-wrap">
-                          <button type="button" className="text-xs font-bold text-black border border-black px-2 py-1 rounded-sm">Editar</button>
-                          <button type="button" className="text-xs font-bold text-red-700 border border-red-700 px-2 py-1 rounded-sm">Eliminar</button>
+                          <button type="button" onClick={() => { setNombreCategoria('Herramientas'); setMensaje('Categoría cargada para editar.'); setError(''); }} className="text-xs font-bold text-black border border-black px-2 py-1 rounded-sm">Editar</button>
+                          <button type="button" onClick={() => eliminarCategoria('Herramientas')} className="text-xs font-bold text-red-700 border border-red-700 px-2 py-1 rounded-sm">Eliminar</button>
                           <Link to="/admin/productos" className="text-xs font-bold text-black border border-black px-2 py-1 rounded-sm">Productos</Link>
                         </div>
                       </td>
-                    </tr>
-                    <tr>
+                    </tr>}
+                    {!categoriasOcultas.includes('Pinturas') && <tr>
                       <td className="p-3">Pinturas</td>
                       <td className="p-3">img</td>
                       <td className="p-3"><span className="inline-block text-green-600 font-bold">Activa</span></td>
                       <td className="p-3">
                         <div className="flex gap-2 flex-wrap">
-                          <button type="button" className="text-xs font-bold text-black border border-black px-2 py-1 rounded-sm">Editar</button>
-                          <button type="button" className="text-xs font-bold text-red-700 border border-red-700 px-2 py-1 rounded-sm">Eliminar</button>
+                          <button type="button" onClick={() => { setNombreCategoria('Pinturas'); setMensaje('Categoría cargada para editar.'); setError(''); }} className="text-xs font-bold text-black border border-black px-2 py-1 rounded-sm">Editar</button>
+                          <button type="button" onClick={() => eliminarCategoria('Pinturas')} className="text-xs font-bold text-red-700 border border-red-700 px-2 py-1 rounded-sm">Eliminar</button>
                           <Link to="/admin/productos" className="text-xs font-bold text-black border border-black px-2 py-1 rounded-sm">Productos</Link>
                         </div>
                       </td>
-                    </tr>
-                    <tr>
+                    </tr>}
+                    {!categoriasOcultas.includes('Plomería') && <tr>
                       <td className="p-3">Plomería</td>
                       <td className="p-3">img</td>
                       <td className="p-3"><span className="inline-block text-red-600 font-bold">Inactiva</span></td>
                       <td className="p-3">
                         <div className="flex gap-2 flex-wrap">
-                          <button type="button" className="text-xs font-bold text-black border border-black px-2 py-1 rounded-sm">Editar</button>
-                          <button type="button" className="text-xs font-bold text-red-700 border border-red-700 px-2 py-1 rounded-sm">Eliminar</button>
+                          <button type="button" onClick={() => { setNombreCategoria('Plomería'); setMensaje('Categoría cargada para editar.'); setError(''); }} className="text-xs font-bold text-black border border-black px-2 py-1 rounded-sm">Editar</button>
+                          <button type="button" onClick={() => eliminarCategoria('Plomería')} className="text-xs font-bold text-red-700 border border-red-700 px-2 py-1 rounded-sm">Eliminar</button>
                           <Link to="/admin/productos" className="text-xs font-bold text-black border border-black px-2 py-1 rounded-sm">Productos</Link>
                         </div>
                       </td>
-                    </tr>
+                    </tr>}
                   </tbody>
                 </table>
               </div>
@@ -136,7 +160,7 @@ export function GestionCategorias({ onLogout }: GestionCategoriasProps) {
                 <h3 id="editar-categoria-titulo" className="text-lg font-black text-black mb-4 border-b-2 border-[#F9B805] pb-2">
                   Editar categoría
                 </h3>
-                <form className="space-y-4" onSubmit={(event) => event.preventDefault()}>
+                <form className="space-y-4" onSubmit={guardarCategoria}>
                   <div>
                     <label htmlFor="categoria-nombre" className="block text-xs font-bold text-black mb-1">
                       Nombre de la categoría
@@ -146,6 +170,8 @@ export function GestionCategorias({ onLogout }: GestionCategoriasProps) {
                       name="nombreCategoria"
                       type="text"
                       placeholder="Ingresar nombre de la categoría"
+                      value={nombreCategoria}
+                      onChange={(event) => setNombreCategoria(event.target.value)}
                       className="w-full border border-gray-400 bg-white text-sm px-3 py-2 rounded-xl focus:outline-none focus:border-black"
                     />
                   </div>
@@ -153,8 +179,9 @@ export function GestionCategorias({ onLogout }: GestionCategoriasProps) {
                     <legend className="px-1 text-xs font-bold text-black">Imagen de la categoría</legend>
                     <input type="file" accept="image/*" className="text-xs text-gray-600" />
                   </fieldset>
+                  {(error || mensaje) && <p role="status" className={`text-xs font-bold ${error ? 'text-red-600' : 'text-green-700'}`}>{error || mensaje}</p>}
                   <div className="flex flex-col-reverse sm:flex-row sm:justify-end gap-2 pt-2">
-                    <button type="button" className="border border-black text-black px-4 py-2 text-xs font-bold rounded-xl">
+                    <button type="button" onClick={() => { setNombreCategoria(''); setError(''); setMensaje('Cambios cancelados.'); }} className="border border-black text-black px-4 py-2 text-xs font-bold rounded-xl">
                       Cancelar
                     </button>
                     <button type="submit" className="bg-black text-white px-4 py-2 text-xs font-bold rounded-xl hover:text-yellow-400 transition-colors">

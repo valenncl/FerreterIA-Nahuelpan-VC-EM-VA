@@ -1,25 +1,30 @@
 import { Link } from 'react-router-dom';
+import logoNahuelpan from '../assets/images/logo.webp';
 
 export function Footer() {
   return (
     <footer className="bg-black border-t-2 border-red-700 py-6 px-8 flex flex-col sm:flex-row items-center justify-between text-white space-y-6 sm:space-y-0">
+      
+      {/* Navegación izquierda */}
       <nav className="flex flex-col space-y-1 text-sm italic font-bold text-left w-full sm:w-auto">
         <Link to="/" className="hover:text-yellow-400 transition-colors">Inicio</Link>
         <Link to="/nosotros" className="hover:text-yellow-400 transition-colors">Nosotros</Link>
         <Link to="/categorias" className="hover:text-yellow-400 transition-colors">Categorías</Link>
       </nav>
 
+      {/* Centro: Logo e información de derechos */}
       <div className="flex flex-col items-center justify-center text-center space-y-2">
-        <svg className="w-12 h-12" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="50" cy="50" r="46" fill="black" stroke="#C92C23" strokeWidth="4"/>
-          <path d="M30 65V35L70 35V65M50 35V65" stroke="#C92C23" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round"/>
-          <text x="50" y="82" textAnchor="middle" fontSize="10" fontWeight="bold" fill="white">NAHUELPAN</text>
-        </svg>
+        <img
+          src={logoNahuelpan}
+          alt="Logo Bulonería y Ferretería Nahuelpan"
+          className="h-12 sm:h-14 w-auto object-contain"
+        />
         <p className="text-xs italic font-bold text-gray-200">
           © Bulonería y Ferretería Nahuelpan – Todos los derechos reservados
         </p>
       </div>
 
+      {/* Redes sociales derecha */}
       <div className="flex items-center space-x-4">
         <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="text-yellow-500 hover:text-yellow-400 transition-colors">
           <svg className="w-8 h-8 fill-current" viewBox="0 0 24 24">

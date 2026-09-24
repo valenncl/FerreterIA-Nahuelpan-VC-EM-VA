@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import logoNahuelpan from '../assets/images/logo.webp';
 
 export const Header: React.FC = () => {
   const { pathname } = useLocation();
@@ -13,9 +14,11 @@ export const Header: React.FC = () => {
         
         {/* Identidad / Logo */}
         <Link to="/" className="flex items-center gap-3 cursor-pointer">
-          <div className="w-10 h-10 rounded-full border-2 border-red-600 bg-black flex items-center justify-center font-black text-nahuelpan-red text-lg shadow-sm">
-            N
-          </div>
+          <img
+            src={logoNahuelpan}
+            alt="Logo Bulonería y Ferretería Nahuelpan"
+            className="h-10 sm:h-12 w-auto object-contain"
+          />
           <div className="flex flex-col leading-tight">
             <span className="text-xs sm:text-sm font-bold text-gray-200">
               Bulonería y Ferretería

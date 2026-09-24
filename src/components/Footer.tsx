@@ -1,9 +1,10 @@
+import { forwardRef } from 'react';
 import { Link } from 'react-router-dom';
 import logoNahuelpan from '../assets/images/logo.webp';
 
-export function Footer() {
+export const Footer = forwardRef<HTMLElement>(function Footer(_, ref) {
   return (
-    <footer className="bg-black border-t-2 border-red-700 py-6 px-8 flex flex-col sm:flex-row items-center justify-between text-white space-y-6 sm:space-y-0">
+    <footer ref={ref} className="bg-black border-t-2 border-red-700 py-6 px-8 flex flex-col sm:flex-row items-center justify-between text-white space-y-6 sm:space-y-0">
       
       {/* Navegación izquierda */}
       <nav className="flex flex-col space-y-1 text-sm italic font-bold text-left w-full sm:w-auto">
@@ -40,4 +41,4 @@ export function Footer() {
       </div>
     </footer>
   );
-}
+});

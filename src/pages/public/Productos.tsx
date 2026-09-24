@@ -158,15 +158,6 @@ export const Productos = () => {
         )}
       </div>
 
-      {/* Botón Flotante de WhatsApp */}
-      <div className="fixed bottom-6 right-6 z-50">
-        <button
-          type="button"
-          className="bg-whatsapp hover:brightness-105 text-white font-bold px-5 py-2.5 rounded-full text-sm shadow-xl flex items-center gap-2 transition-transform hover:scale-105"
-        >
-          <span className="text-lg">💬</span> Contactarse
-        </button>
-      </div>
     </div>
   );
 };
